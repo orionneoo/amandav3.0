@@ -1,0 +1,1533 @@
+[
+  {
+    "timestamp": "2025-06-22T15:05:58.324Z",
+    "error": "Connection Terminated",
+    "stack": "Error: Connection Terminated\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:459:30)\n    at WebSocketClient.emit (node:events:524:28)\n    at WebSocket.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\Client\\websocket.js:46:100)\n    at WebSocket.emit (node:events:524:28)\n    at WebSocket.emitClose (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\ws\\lib\\websocket.js:272:10)\n    at TLSSocket.socketOnClose (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\ws\\lib\\websocket.js:1341:15)\n    at TLSSocket.emit (node:events:536:35)\n    at node:net:351:12\n    at TCP.done (node:_tls_wrap:650:7)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:06:00.006Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at Object.executeUSyncQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\usync.js:62:30)\n    at getUSyncDevices (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:147:35)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:387:57\n    at Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:32)\n    at relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:30)\n    at Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:23)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:350:29)",
+    "context": {
+      "messageId": "7348B26555687D436C25162828336CFE",
+      "jid": "109311313363133@lid",
+      "userId": "109311313363133@lid",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:10.848Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:16.825Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:22.595Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:23.015Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:131:54)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:153:55)\n    at EventEmitter.emit (node:events:524:28)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:524:28)",
+    "context": {
+      "messageId": "3AAB797156097364F9221569FEC1ECA8",
+      "jid": "120363421061606453@g.us",
+      "userId": "120363421061606453@g.us",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:28.515Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:34.161Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:39.948Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:41.287Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)",
+    "context": {
+      "messageId": "2B3DAA865FA67A64A37420819AEAF324",
+      "jid": "120363417657388543@g.us",
+      "userId": "5521976163084@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:46.143Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:52.010Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:57.973Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:33:59.042Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)",
+    "context": {
+      "jid": "5521976163084-1586142562@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:34:03.777Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:34:09.640Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:34:54.593Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:34:54.934Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)",
+    "context": {
+      "messageId": "54765F2426B986C08361DF491FBD6C86",
+      "jid": "120363417657388543@g.us",
+      "userId": "5521976163084@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:34:55.023Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at Object.sendPresenceUpdate (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\chats.js:499:19)\n    at MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:330:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:153:29)",
+    "context": {
+      "messageId": "3EB050D7824E9CB01B31B0",
+      "jid": "120363417657388543@g.us",
+      "userId": "5521986211296@s.whatsapp.net",
+      "action": "send_presence_update_ai"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:34:59.042Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)",
+    "context": {
+      "messageId": "3EB050D7824E9CB01B31B0",
+      "jid": "120363417657388543@g.us",
+      "userId": "5521986211296@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:00.362Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:05.997Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:11.632Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:17.531Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:23.181Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:29.332Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:35.364Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:41.223Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:46.907Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:53.068Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:53.147Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at Object.executeUSyncQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\usync.js:62:30)\n    at getUSyncDevices (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:147:35)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:387:57\n    at Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:32)\n    at relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:30)\n    at Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:23)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:350:29)",
+    "context": {
+      "messageId": "3AC64CB59634E6B279EC",
+      "jid": "5521993845153@s.whatsapp.net",
+      "userId": "5521993845153@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:35:58.667Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:04.471Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:10.323Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:15.971Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:21.843Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:28.229Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:38.060Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:43.912Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:49.712Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:36:55.382Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:37:01.268Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:37:01.467Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at Object.executeUSyncQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\usync.js:62:30)\n    at getUSyncDevices (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:147:35)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:387:57\n    at Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:32)\n    at relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:30)\n    at Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:23)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:350:29)",
+    "context": {
+      "messageId": "3A97E47AB4C53DD608BA",
+      "jid": "5521993845153@s.whatsapp.net",
+      "userId": "5521993845153@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:37:04.615Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:131:54)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:153:55)\n    at EventEmitter.emit (node:events:524:28)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:524:28)",
+    "context": {
+      "messageId": "E1598DF88E7B8A77EFA07ACEAC6D290E-1",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521966237840@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:37:06.907Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:37:12.469Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:04.286Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:09.871Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:15.646Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:21.577Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:27.274Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:32.915Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:34.471Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)",
+    "context": {
+      "messageId": "55DBD099085FC410C297B17C695204B2",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521977034630@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:38.574Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:44.986Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:50.702Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:52:56.469Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:12.278Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:18.412Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:24.081Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:29.656Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:36.015Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:50.492Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:57:56.719Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:02.492Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:02.637Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:131:54)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:153:55)\n    at EventEmitter.emit (node:events:524:28)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:524:28)",
+    "context": {
+      "messageId": "008F15313D6805F026A8CA8D967A9C07",
+      "jid": "120363417800597699@g.us",
+      "userId": "120363417800597699@g.us",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:08.139Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:13.975Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:19.793Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:25.650Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T15:58:56.478Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32",
+    "context": {
+      "messageId": "008F15313D6805F026A8CA8D967A9C07",
+      "jid": "120363417800597699@g.us",
+      "userId": "5521993784083@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T16:37:16.700Z",
+    "error": "Stream Errored (conflict)",
+    "stack": "Error: Stream Errored (conflict)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "false",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T16:57:46.993Z",
+    "error": "Connection Failure",
+    "stack": "Error: Connection Failure\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:529:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "false",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T16:58:13.732Z",
+    "error": "Stream Errored (restart required)",
+    "stack": "Error: Stream Errored (restart required)\n    at WebSocketClient.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:524:13)\n    at WebSocketClient.emit (node:events:524:28)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:241:35\n    at Object.decodeFrame (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\noise-handler.js:144:17)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+    "context": {
+      "action": "connection_close",
+      "shouldReconnect": "true",
+      "reconnectAttempts": "0"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T19:13:32.306Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:341:51)",
+    "context": {
+      "jid": "120363401082437595@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T19:13:40.813Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:41\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)\n    at async Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:17)",
+    "context": {
+      "messageId": "0B5B8EEB63FF1BE6D0C067B4FFE28019",
+      "jid": "120363401082437595@g.us",
+      "userId": "5521991458165@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T20:09:58.290Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:341:51)",
+    "context": {
+      "jid": "120363217991432667@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-22T20:10:03.529Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:41\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)\n    at async Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:17)",
+    "context": {
+      "messageId": "EB551F1611C8AD3994A1AFAE744F7949",
+      "jid": "120363217991432667@g.us",
+      "userId": "5521981359925@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:31:57.517Z",
+    "context": {
+      "messageId": "C9B9E1FE5FFBBF8D90F5BE84A0D4948C",
+      "jid": "120363401025485812@g.us",
+      "userId": "5521968828024@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:32:05.256Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at Object.executeUSyncQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\usync.js:62:30)\n    at getUSyncDevices (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:147:35)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:387:57\n    at Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:32)\n    at relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:30)\n    at Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:23)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:591:29)",
+    "context": {
+      "messageId": "E3899483A29DC4E52F195B8108E21925",
+      "jid": "4995097305337@lid",
+      "userId": "4995097305337@lid",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:32:52.561Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at Object.executeUSyncQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\usync.js:62:30)\n    at getUSyncDevices (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:147:35)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:387:57\n    at Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:32)\n    at relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:30)\n    at Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:23)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:591:29)",
+    "context": {
+      "messageId": "E365BF04FAE2FD427A864E12EA84CF74",
+      "jid": "4995097305337@lid",
+      "userId": "4995097305337@lid",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:33:26.694Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:178:54)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:234:55)\n    at EventEmitter.emit (node:events:524:28)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\event-buffer.js:40:16)\n    at EventEmitter.emit (node:events:524:28)",
+    "context": {
+      "messageId": "EBA9845F60CFD89BFCA346BF11C62BE8",
+      "jid": "120363401025485812@g.us",
+      "userId": "5521985397450@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:33:26.704Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:178:54)\n    at EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:234:55)",
+    "context": {
+      "messageId": "741454D1DF27A54053A9A708F7E76111",
+      "jid": "120363244766466154@g.us",
+      "userId": "5521978784838@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:33:31.672Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at Object.executeUSyncQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\usync.js:62:30)\n    at getUSyncDevices (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:147:35)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:387:57\n    at Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:32)\n    at relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:30)\n    at Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:23)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:591:29)",
+    "context": {
+      "messageId": "19E8997EEF9E38CE291872493DD4B23A",
+      "jid": "4995097305337@lid",
+      "userId": "4995097305337@lid",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:45:45.336Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:344:51)",
+    "context": {
+      "jid": "120363417657388543@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T02:46:10.008Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:344:51)",
+    "context": {
+      "jid": "5513981065518-1575941802@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T11:21:31.704Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:344:51)",
+    "context": {
+      "jid": "120363357099800309@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T12:27:01.859Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:344:51)",
+    "context": {
+      "jid": "120363417800597699@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T12:27:07.173Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:41\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)\n    at async relayMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:294:9)\n    at async Object.sendMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:678:17)",
+    "context": {
+      "messageId": "7FC64BB91C174D0C6CE595A5E745C4F7",
+      "jid": "120363417800597699@g.us",
+      "userId": "5521990587321@s.whatsapp.net",
+      "action": "send_ai_response"
+    }
+  },
+  {
+    "timestamp": "2025-06-23T16:46:09.607Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:344:51)",
+    "context": {
+      "jid": "5522999888937-1568064815@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-25T02:45:28.062Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:350:51)",
+    "context": {
+      "jid": "5519981482858-1468635081@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-25T03:33:42.011Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:350:51)",
+    "context": {
+      "jid": "120363419017798823@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-25T04:24:54.472Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:350:51)",
+    "context": {
+      "jid": "120363388206049308@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-25T11:32:45.680Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at listOnTimeout (node:internal/timers:555:9)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "messageId": "61B117B91C257CB233ACBFCD720B0421",
+      "jid": "120363401025485812@g.us",
+      "userId": "5521989640224@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-25T20:39:27.501Z",
+    "context": {
+      "messageId": "C157FA19785D626F11A176C562314465",
+      "jid": "120363401025485812@g.us",
+      "userId": "5521985397450@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:45:09.697Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)",
+    "context": {
+      "jid": "120363368705000896@g.us",
+      "userId": "554688046940@s.whatsapp.net",
+      "action": "welcome_new_member"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:45:10.540Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at listOnTimeout (node:internal/timers:555:9)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "messageId": "2FF6CCC1EF4C242C9FC0CEA4BF3810A5",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521975528981@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:45:35.206Z",
+    "error": "Connection Closed",
+    "stack": "Error: Connection Closed\n    at sendRawMessage (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:60:19)\n    at sendNode (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:79:16)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:145:13)\n    at groupQuery (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:12:55)\n    at groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:30)\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:311:47\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Promise.all (index 0)\n    at async C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\messages-send.js:304:51\n    at async Object.transaction (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\auth-utils.js:135:26)",
+    "context": {
+      "jid": "120363393859592535@g.us",
+      "userId": "5521995619885@s.whatsapp.net",
+      "action": "welcome_new_member"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:54:59.479Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "E6C2D5245DB045AE896D1FE0E2EBA785",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521987620932@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:54:59.762Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "E5733C13F6C2F0D2FB8BCE5EA47AFF1F",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521966978388@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:54:59.875Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "F03260FC789337B9291CF0EBAF6DB716",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521980697558@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:54:59.989Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3A7E26EB77944E018F57",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521971009188@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.102Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3A2E33AAC78981EF5170",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521965056671@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.219Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "A39CA65B4D0407987F2121287FE558FD",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521987620932@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.331Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "E8C36C2D87C14479E5699033C01F3E9E",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521994694638@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.443Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "1BDF25A7B10413501419E790428D0375",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521966978388@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.732Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "E65B08604C5A7951AFC466670FB3F170",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521994694638@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.845Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "090553D465FE7B216404D6ADE09CD5C5",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521977118600@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:00.958Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "EF25B540C896786CA0D24947F33D4F71",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521966978388@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.071Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "73559BF26BEB2F7533C3E757256C96B6",
+      "jid": "120363393859592535@g.us",
+      "userId": "5521969249409@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.185Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "8EBE51957BA7CF4AE39C55F2FD02DA2C",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521980697558@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.297Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "73718CA169536197846C2FBDBC273556",
+      "jid": "120363393859592535@g.us",
+      "userId": "5521969249409@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.410Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "1ED66958F8208C0B74471B74B3B928A0",
+      "jid": "120363368705000896@g.us",
+      "userId": "5521981521478@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.683Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3ACA0BF1994BA4B60ACE",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521965056671@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.797Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "6F27A34BE37685BBE2E0A2A7B2CCFDA7",
+      "jid": "120363388206049308@g.us",
+      "userId": "5522992587893@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:01.911Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3AE99CA2B6CF06D99CED",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521965056671@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:02.025Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3AB238547584CFB8FEAE",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521971009188@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:08.910Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3A02CB8E430A0F2FAA12",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521971009188@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:09.024Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "50B2C1A025CB880712B44D6BC713D174",
+      "jid": "120363388206049308@g.us",
+      "userId": "5522992587893@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:09.137Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3AC715F7C970738099C1",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521965056671@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:09.250Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "B63E1FBD98F9B84FD15822BC3516BAB4",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521994694638@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:09.366Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3A00620D533B6D636999",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521965056671@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:09.479Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3209CA15B2A2CF50286F1D493702184B",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521966978388@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:09.828Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async GroupService.ensureGroupExists (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\GroupService.js:34:35)\n    at async AIService.getChatResponse (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\AIService.js:246:25)\n    at async AIService.processMessageWithFunctionCalling (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\AIService.js:327:34)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:514:34)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "groupJid": "120363393859592535@g.us",
+      "action": "ensure_group_exists"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:17.835Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3AF455CB2A90B8FC52C3",
+      "jid": "120363368705000896@g.us",
+      "userId": "5521981946327@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:17.948Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "F7369253CF8E9D31DC467626793B9F5C",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521977118600@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.062Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3EB06ECF1D6C66ACAD4E29",
+      "jid": "120363368705000896@g.us",
+      "userId": "5521977998445@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.176Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "1DBDCBAF7D309D35A0103060ED9CC92E",
+      "jid": "120363388206049308@g.us",
+      "userId": "5522992587893@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.291Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3A452ABA28C18F770779",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521971009188@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.407Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "4295C8E481F8A293245627162254412D",
+      "jid": "5521976163084-1586142562@g.us",
+      "userId": "5521976163084-1586142562@g.us",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.703Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "B1696FF5828F5A35BE06AFC441213B47",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521980697558@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.817Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "354DC24E6CECF0B36ADFCE816CDD1495",
+      "jid": "120363388206049308@g.us",
+      "userId": "5522992587893@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-26T18:55:18.930Z",
+    "error": "rate-overlimit",
+    "stack": "Error: rate-overlimit\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async MessageManager.handleMessage (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\MessageManager.js:163:43)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:241:29)",
+    "context": {
+      "messageId": "3AD6C3A21C0F090075FE",
+      "jid": "120363398316932304@g.us",
+      "userId": "5521976001291@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T03:14:40.662Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32",
+    "context": {
+      "messageId": "BAA6FED353FE831353587DA03A343021",
+      "jid": "120363388206049308@g.us",
+      "userId": "5521995499748@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T13:24:54.044Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async GroupService.updateGroupInfo (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\GroupService.js:142:35)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:323:25)",
+    "context": {
+      "groupJid": "120363417041804028@g.us",
+      "action": "update_group_info"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T13:24:54.454Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:425:51)",
+    "context": {
+      "jid": "120363417041804028@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T14:01:58.595Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async GroupService.updateGroupInfo (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\GroupService.js:142:35)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:323:25)",
+    "context": {
+      "groupJid": "5516997767712-1571168646@g.us",
+      "action": "update_group_info"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T14:01:58.934Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:425:51)",
+    "context": {
+      "jid": "5516997767712-1571168646@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T15:46:46.524Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async GroupService.updateGroupInfo (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\GroupService.js:142:35)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:323:25)",
+    "context": {
+      "groupJid": "120363419893668280@g.us",
+      "action": "update_group_info"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T15:46:46.939Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:425:51)",
+    "context": {
+      "jid": "120363419893668280@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T16:19:45.959Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async GroupService.updateGroupInfo (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\services\\GroupService.js:142:35)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:323:25)",
+    "context": {
+      "groupJid": "120363419472149501@g.us",
+      "action": "update_group_info"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T16:19:46.352Z",
+    "error": "forbidden",
+    "stack": "Error: forbidden\n    at assertNodeErrorFree (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\WABinary\\generic-utils.js:57:15)\n    at query (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\socket.js:148:48)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.groupMetadata (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Socket\\groups.js:22:24)\n    at async EventEmitter.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\dist\\core\\Bot.js:425:51)",
+    "context": {
+      "jid": "120363419472149501@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-27T23:53:56.273Z",
+    "error": "No sessions",
+    "stack": "SessionError: No sessions\n    at 224566727176205.5 [as awaitable] (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\libsignal\\src\\session_cipher.js:71:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async _asyncQueueExecutor (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\libsignal\\src\\queue_job.js:20:29)",
+    "context": {
+      "jid": "120363266509955854@g.us",
+      "action": "goodbye_message"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T11:24:03.013Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at listOnTimeout (node:internal/timers:555:9)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "messageId": "425C707D87D6FCCE297FC7FAFD9D0E2F",
+      "jid": "5521976163084-1586142562@g.us",
+      "userId": "5521981360180@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T11:52:44.539Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at listOnTimeout (node:internal/timers:555:9)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "messageId": "2243E4D326B2710A2A07AFB12690F6E1",
+      "jid": "120363335810956341@g.us",
+      "userId": "5521967233931@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T12:18:50.765Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "action": "sync_all_groups"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T12:19:00.771Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "action": "get_all_groups"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T12:19:20.923Z",
+    "error": "Operation `groups.findOneAndUpdate()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.findOneAndUpdate()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "groupJid": "120363397666250930@g.us",
+      "action": "update_group_info"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T12:19:30.931Z",
+    "error": "Operation `groups.findOne()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "groupJid": "120363397666250930@g.us",
+      "action": "get_group_stats"
+    }
+  },
+  {
+    "timestamp": "2025-06-28T12:46:04.377Z",
+    "error": "Timed Out",
+    "stack": "Error: Timed Out\n    at C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\@whiskeysockets\\baileys\\lib\\Utils\\generics.js:151:32",
+    "context": {
+      "messageId": "0C314F1796A1943C9FFF2EE58B3505C1",
+      "jid": "120363401025485812@g.us",
+      "userId": "5521981098659@s.whatsapp.net",
+      "action": "get_group_metadata"
+    }
+  }
+]

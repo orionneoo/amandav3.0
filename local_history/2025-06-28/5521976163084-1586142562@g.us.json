@@ -1,0 +1,38 @@
+{
+  "groupId": "5521976163084-1586142562@g.us",
+  "date": "2025-06-28",
+  "messages": [
+    {
+      "id": "3EB0742749105AFC2795CC",
+      "from": "5521987971447@s.whatsapp.net",
+      "timestamp": 1751119854,
+      "text": "*TODOS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "amante"
+    },
+    {
+      "id": "3EB0742749105AFC2795CC",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751119854,
+      "text": "Opa, geral parando pra prestar atenção! 👀 Que será que vem por aí? Me contem tudo! Adoro um bom babado! 😉😈💋\n",
+      "type": "textMessage",
+      "personality": "amante"
+    }
+  ],
+  "stats": {
+    "totalMessages": 2,
+    "topUsers": [
+      {
+        "jid": "5521987971447@s.whatsapp.net",
+        "name": "5521987971447",
+        "messageCount": 1
+      },
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 1
+      }
+    ],
+    "topCommands": []
+  }
+}

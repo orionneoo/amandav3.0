@@ -1,0 +1,38 @@
+{
+  "groupId": "5521991588222@s.whatsapp.net",
+  "date": "2025-06-28",
+  "messages": [
+    {
+      "id": "90DBF2EF670C21E1581EE04100D1DC6C",
+      "from": "5521991588222@s.whatsapp.net",
+      "timestamp": 1751118207,
+      "text": "@",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "90DBF2EF670C21E1581EE04100D1DC6C",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751118207,
+      "text": "Oi! ✨ Que bom te ver por aqui. O que te chamou atenção no meu perfil? 😏",
+      "type": "textMessage",
+      "personality": "padrao"
+    }
+  ],
+  "stats": {
+    "totalMessages": 2,
+    "topUsers": [
+      {
+        "jid": "5521991588222@s.whatsapp.net",
+        "name": "5521991588222",
+        "messageCount": 1
+      },
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 1
+      }
+    ],
+    "topCommands": []
+  }
+}

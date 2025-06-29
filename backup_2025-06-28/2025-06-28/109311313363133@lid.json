@@ -1,0 +1,54 @@
+{
+  "groupId": "109311313363133@lid",
+  "date": "2025-06-28",
+  "messages": [
+    {
+      "id": "0408D4A49D5A5C78732461BF69C2AC03",
+      "from": "109311313363133@lid",
+      "timestamp": 1751109814,
+      "text": "Oi Amanda, tô apaixonado na Laura",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "A0FC28F3C81901139EB4680069348DD4",
+      "from": "109311313363133@lid",
+      "timestamp": 1751109815,
+      "text": "Oi Amanda, tô apaixonado na Laura",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "0408D4A49D5A5C78732461BF69C2AC03",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751109814,
+      "text": "Eita, Romeu! 🥰 Mas calma, antes de se entregar de vez, que tal conhecer um paraíso particular? 😉 No meu VIP, você encontra um mar de Lauras (e muito mais!) por só R$20 por mês! 🔥\n\nPra saber como embarcar nessa aventura e esquecer um pouco a paixão platônica, chama o Wellington no zap: 21 96723-3931. Ele te conta tudo e te espera pra afogar as mágoas (e outras coisas mais) por lá! 😈\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "A0FC28F3C81901139EB4680069348DD4",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751109815,
+      "text": "Tive um problema técnico aqui. Tenta de novo em alguns segundos! 🔧 Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver tudo! 💪",
+      "type": "textMessage",
+      "personality": "padrao"
+    }
+  ],
+  "stats": {
+    "totalMessages": 4,
+    "topUsers": [
+      {
+        "jid": "109311313363133@lid",
+        "name": "109311313363133",
+        "messageCount": 2
+      },
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 2
+      }
+    ],
+    "topCommands": []
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "groupId": "5521976163084@s.whatsapp.net",
+  "date": "2025-06-28",
+  "messages": [
+    {
+      "id": "05E57008EA8FA7A20D426FD13A349B78",
+      "from": "5521976163084@s.whatsapp.net",
+      "timestamp": 1751112118,
+      "text": "Olá, agradeço seu contato, no momento não estou disponível, orçamentos e agendamentos somente das 10:00 as 21:00, obg pela compreensão, tenha uma ótima noite ✍️😊 Caso queira adiantar seu orçamento, pode me enviar a foto da tattoo q deseja, ou descrever sua ideia, junto com uma foto do local do corpo e o tamanho em centímetros, que assim q eu estiver disponível já lhe passo seu orçamento 😁😁",
+      "type": "conversation",
+      "personality": "padrao"
+    },
+    {
+      "id": "05E57008EA8FA7A20D426FD13A349B78",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751112118,
+      "text": "Tudo bem! Aproveitando que você está dando um tempinho, que tal dar uma olhadinha no nosso grupo VIP? É só R$20 por mês e você tem acesso a um conteúdo exclusivo que vai te deixar de boca aberta! 😏\n\nE pra não perder tempo, já chama o Wellington no 21 96723-3931. Ele te conta todos os detalhes e te ajuda a entrar rapidinho! 😉 E manda aquela ideia da tattoo, viu? A gente ama gente criativa! 🔥\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    }
+  ],
+  "stats": {
+    "totalMessages": 2,
+    "topUsers": [
+      {
+        "jid": "5521976163084@s.whatsapp.net",
+        "name": "5521976163084",
+        "messageCount": 1
+      },
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 1
+      }
+    ],
+    "topCommands": []
+  }
+}

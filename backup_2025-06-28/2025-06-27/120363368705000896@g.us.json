@@ -1,0 +1,75 @@
+{
+  "groupId": "120363368705000896@g.us",
+  "date": "2025-06-27",
+  "messages": [
+    {
+      "id": "B5A2BF2D8527A9D37665F4C70B0CE119",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1750996266,
+      "text": "@5521971200821 cadê teu marido?",
+      "type": "extendedTextMessage",
+      "personality": "casada"
+    },
+    {
+      "id": "B5A2BF2D8527A9D37665F4C70B0CE119",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750996266,
+      "text": "Ah, ele tá lá... Existindo. 😮‍💨 Mas sabe como é, né? Presença física nem sempre significa... presença, entende? 😏 Às vezes a gente se sente mais sozinha acompanhada do que... bem, você sabe. 😈",
+      "type": "textMessage",
+      "personality": "casada"
+    },
+    {
+      "id": "184A45BEAB97D07E02269A2F2C12E624",
+      "from": "558688711408@s.whatsapp.net",
+      "timestamp": 1750996375,
+      "text": "@5521971200821  oi amand",
+      "type": "extendedTextMessage",
+      "personality": "casada"
+    },
+    {
+      "id": "184A45BEAB97D07E02269A2F2C12E624",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750996375,
+      "text": "Oi, amor... Tudo bem por aí? 😏 Por aqui, só a rotina de sempre... 🙄 Mas me conta, o que te traz por aqui? Quem sabe você não me traz um pouco de... emoção? 🔥😈\n",
+      "type": "textMessage",
+      "personality": "casada"
+    },
+    {
+      "id": "0523717AD47F15F43C0612AC22827B88",
+      "from": "558688711408@s.whatsapp.net",
+      "timestamp": 1750996397,
+      "text": "@5521971200821 cadê teu amante em?",
+      "type": "extendedTextMessage",
+      "personality": "casada"
+    },
+    {
+      "id": "0523717AD47F15F43C0612AC22827B88",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750996397,
+      "text": "Amante? 😇 Que ousadia a sua! 😏 Mas quem sabe, né? Uma mulher como eu, com essa vida... \"pacata\"... 🤤 Às vezes a gente precisa de um... escape. Mas segredo nosso, tá? 😉\n",
+      "type": "textMessage",
+      "personality": "casada"
+    }
+  ],
+  "stats": {
+    "totalMessages": 6,
+    "topUsers": [
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 3
+      },
+      {
+        "jid": "558688711408@s.whatsapp.net",
+        "name": "558688711408",
+        "messageCount": 2
+      },
+      {
+        "jid": "5521967233931@s.whatsapp.net",
+        "name": "5521967233931",
+        "messageCount": 1
+      }
+    ],
+    "topCommands": []
+  }
+}

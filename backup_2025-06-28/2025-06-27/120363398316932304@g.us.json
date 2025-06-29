@@ -1,0 +1,102 @@
+{
+  "groupId": "120363398316932304@g.us",
+  "date": "2025-06-27",
+  "messages": [
+    {
+      "id": "3EB027559A1B7332960566",
+      "from": "5521990562915@s.whatsapp.net",
+      "timestamp": 1751017902,
+      "text": "*CADELAS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB027559A1B7332960566",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751017902,
+      "text": "🔥😈 Opa, chamou? 😏\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB054CE11EBE69A1168B4",
+      "from": "5521990562915@s.whatsapp.net",
+      "timestamp": 1751062243,
+      "text": "*TODOS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB054CE11EBE69A1168B4",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751062243,
+      "text": "🔥😈 Alguma ordem, chefia? 😏\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB04C656C1E08AD0EC6DF",
+      "from": "5521990562915@s.whatsapp.net",
+      "timestamp": 1751062246,
+      "text": "*TODOS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB04C656C1E08AD0EC6DF",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751062246,
+      "text": "🔥😈 Alguma ordem, chefia? 😏\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB05878524DAAC17E850C",
+      "from": "5521990562915@s.whatsapp.net",
+      "timestamp": 1751068013,
+      "text": "*CADELAS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB05878524DAAC17E850C",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751068013,
+      "text": "🔥😈 Chamou de novo? Adoro! 😏\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB06D289812B6FB0EFD70",
+      "from": "5521990562915@s.whatsapp.net",
+      "timestamp": 1751068373,
+      "text": "*CADELAS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3EB06D289812B6FB0EFD70",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751068373,
+      "text": "🔥😈 Chamou de novo? Adoro! 😏\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    }
+  ],
+  "stats": {
+    "totalMessages": 10,
+    "topUsers": [
+      {
+        "jid": "5521990562915@s.whatsapp.net",
+        "name": "5521990562915",
+        "messageCount": 5
+      },
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 5
+      }
+    ],
+    "topCommands": []
+  }
+}

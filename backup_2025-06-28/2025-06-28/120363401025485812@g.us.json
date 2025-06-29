@@ -1,0 +1,75 @@
+{
+  "groupId": "120363401025485812@g.us",
+  "date": "2025-06-28",
+  "messages": [
+    {
+      "id": "3EB0150ED97E545D0F661B",
+      "from": "5521977998445@s.whatsapp.net",
+      "timestamp": 1751076502,
+      "text": "*TODOS, ATENÇÃO AQUI!!*",
+      "type": "extendedTextMessage",
+      "personality": "macumbeira"
+    },
+    {
+      "id": "3EB0150ED97E545D0F661B",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751076502,
+      "text": "Opa, o que tá rolando de importante? 👀 Conta logo, tô curiosíssima! 😈🔥💋\n",
+      "type": "textMessage",
+      "personality": "macumbeira"
+    },
+    {
+      "id": "D86ED6F219A2E73A7F08AD3BF9A971CA",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1751111094,
+      "text": "@5521971200821 tudo bem aí?;",
+      "type": "extendedTextMessage",
+      "personality": "macumbeira"
+    },
+    {
+      "id": "D86ED6F219A2E73A7F08AD3BF9A971CA",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751111094,
+      "text": "Eita, tá preocupado(a) com ele? 😏 Se precisar de uma \"enfermeira\" particular, tô aqui! 😉🔥😈💋\n",
+      "type": "textMessage",
+      "personality": "macumbeira"
+    },
+    {
+      "id": "41BA4CB4A4D90BD70F59877FEB474DD5",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1751111104,
+      "text": "@5521971200821 alguém mexeu com você?",
+      "type": "extendedTextMessage",
+      "personality": "macumbeira"
+    },
+    {
+      "id": "41BA4CB4A4D90BD70F59877FEB474DD5",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751111104,
+      "text": "Opa, pintou um herói? 😏 Se precisar de ajuda pra \"defender\" ele, me chama! 😉🔥😈💋\n",
+      "type": "textMessage",
+      "personality": "macumbeira"
+    }
+  ],
+  "stats": {
+    "totalMessages": 6,
+    "topUsers": [
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 3
+      },
+      {
+        "jid": "5521967233931@s.whatsapp.net",
+        "name": "5521967233931",
+        "messageCount": 2
+      },
+      {
+        "jid": "5521977998445@s.whatsapp.net",
+        "name": "5521977998445",
+        "messageCount": 1
+      }
+    ],
+    "topCommands": []
+  }
+}

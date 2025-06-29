@@ -1,0 +1,86 @@
+{
+  "groupId": "120363408129883141@g.us",
+  "date": "2025-06-27",
+  "messages": [
+    {
+      "id": "379AA53356DF579AE1C097AB4F6E4EAE",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1750995414,
+      "text": "@5521971200821 quem é voce",
+      "type": "extendedTextMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "379AA53356DF579AE1C097AB4F6E4EAE",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750995414,
+      "text": "Eita, que a curiosidade matou o gato! 👀 @5521971200821, tá na hora de se revelar, ou deixamos a imaginação correr solta? 😉😈🔥\n",
+      "type": "textMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "4AECA5097D44DC2FF2A7264F086DD8F0",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1750995561,
+      "text": "@5521971200821 tá aí?",
+      "type": "extendedTextMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "4AECA5097D44DC2FF2A7264F086DD8F0",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750995561,
+      "text": "Será que @5521971200821 foi abduzido? 👽 Melhor cutucar pra ver se acorda! 😉😈🔥\n",
+      "type": "textMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "196DACD9430DB677AAEC5668354AB77C",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1750995573,
+      "text": "@5521971200821 fala cabo",
+      "type": "extendedTextMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "196DACD9430DB677AAEC5668354AB77C",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750995573,
+      "text": "Ih, misturou as estações! 😜 @5521971200821, responde aí pro(a) camarada, ou vai levar enquadro? 😉😈🔥\n",
+      "type": "textMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "B14599E773488CDAB703B750191F732F",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1750995831,
+      "text": "@5521971200821 serviço amanhã?",
+      "type": "extendedTextMessage",
+      "personality": "policial"
+    },
+    {
+      "id": "B14599E773488CDAB703B750191F732F",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1750995831,
+      "text": "Essa eu não sei responder, meu bem... 😏 Mas se precisar de um \"serviço\" particular, tô sempre à disposição! 😉😈🔥\n",
+      "type": "textMessage",
+      "personality": "policial"
+    }
+  ],
+  "stats": {
+    "totalMessages": 8,
+    "topUsers": [
+      {
+        "jid": "5521967233931@s.whatsapp.net",
+        "name": "5521967233931",
+        "messageCount": 4
+      },
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 4
+      }
+    ],
+    "topCommands": []
+  }
+}

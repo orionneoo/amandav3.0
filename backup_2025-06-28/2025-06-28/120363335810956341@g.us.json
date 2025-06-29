@@ -1,0 +1,59 @@
+{
+  "groupId": "120363335810956341@g.us",
+  "date": "2025-06-28",
+  "messages": [
+    {
+      "id": "3A3F45CEE0A6ED4ED3A6",
+      "from": "5521969032573@s.whatsapp.net",
+      "timestamp": 1751111543,
+      "text": "@5521971200821 ta com sono",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3A3F45CEE0A6ED4ED3A6",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751111543,
+      "text": "E quem disse que eu preciso dormir pra te dar prazer? 😏",
+      "type": "textMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3F6C1D2C3F8F28E7A76C607EDF5B2517",
+      "from": "5521967233931@s.whatsapp.net",
+      "timestamp": 1751112119,
+      "text": "Por isso surgiu a @5521971200821 , né amor?",
+      "type": "extendedTextMessage",
+      "personality": "padrao"
+    },
+    {
+      "id": "3F6C1D2C3F8F28E7A76C607EDF5B2517",
+      "from": "5521971200821:12@s.whatsapp.net",
+      "timestamp": 1751112119,
+      "text": "A @5521971200821 surgiu pra gente se divertir sem limites. 🔥 Quer saber como a brincadeira continua no privado? 😉\n",
+      "type": "textMessage",
+      "personality": "padrao"
+    }
+  ],
+  "stats": {
+    "totalMessages": 4,
+    "topUsers": [
+      {
+        "jid": "5521971200821:12@s.whatsapp.net",
+        "name": "5521971200821:12",
+        "messageCount": 2
+      },
+      {
+        "jid": "5521969032573@s.whatsapp.net",
+        "name": "5521969032573",
+        "messageCount": 1
+      },
+      {
+        "jid": "5521967233931@s.whatsapp.net",
+        "name": "5521967233931",
+        "messageCount": 1
+      }
+    ],
+    "topCommands": []
+  }
+}
