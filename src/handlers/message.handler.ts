@@ -168,7 +168,7 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
   const mentionedJids = contextInfo?.mentionedJid || [];
   const isMentioningBot = mentionedJids.map(jid => jidNormalizedUser(jid)).includes(jidNormalizedUser(botJid));
 
-  // 3. Detecção textual (mantida)
+  // 3. Detecção textual (melhorada para incluir legendas de mídia)
   const regexMention = new RegExp(`@?${botJid.split('@')[0]}\\b`, 'i');
   const textMentionPatterns = [
     `@${botJid.split('@')[0]}`,
@@ -185,9 +185,12 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
     'Amanda?',
     'AMANDA?'
   ];
+  
+  // NOVO: Verificar menções tanto no texto quanto na legenda de mídia
+  const fullTextToCheck = text + ' ' + (messageContent.imageMessage?.caption || '') + ' ' + (messageContent.videoMessage?.caption || '');
   const isTextMentioningBot = textMentionPatterns.some(pattern => 
-    text.toLowerCase().includes(pattern.toLowerCase())
-  ) || regexMention.test(text);
+    fullTextToCheck.toLowerCase().includes(pattern.toLowerCase())
+  ) || regexMention.test(fullTextToCheck);
 
   // Combina as formas de menção
   const isMentioningBotFinal = isReplyToBot || isMentioningBot || isTextMentioningBot;
@@ -202,6 +205,9 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
       isMentioningBotFinal,
       mentionedJids: mentionedJids.map(jid => jid?.slice(-10)),
       text: text.substring(0, 50) + '...',
+      imageCaption: messageContent.imageMessage?.caption?.substring(0, 30) + '...' || 'N/A',
+      videoCaption: messageContent.videoMessage?.caption?.substring(0, 30) + '...' || 'N/A',
+      fullTextChecked: fullTextToCheck.substring(0, 50) + '...',
       hasMedia: !!mediaType,
       mediaType: mediaType
     });
@@ -364,6 +370,3 @@ async function handleAiMediaInteraction(context: MessageContext) {
     });
   }
 }
-
-  // REFACTOR: A função handleAiInteraction não é mais necessária,
-  // a chamada é feita diretamente no roteador. 
