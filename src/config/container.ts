@@ -15,6 +15,12 @@ export const TYPES = {
   // NOVO: Sistema de captura de visualização única
   ViewOnceCaptureService: Symbol.for('ViewOnceCaptureService'),
   
+  // NOVO: Sistema de captura de mídia
+  MediaCaptureService: Symbol.for('MediaCaptureService'),
+  
+  // NOVO: Sistema independente de observação de visualizações únicas
+  ViewOnceWatcherService: Symbol.for('ViewOnceWatcherService'),
+  
   // Novos serviços de persistência
   LocalHistoryService: Symbol.for('LocalHistoryService'),
   DailySummaryService: Symbol.for('DailySummaryService'),

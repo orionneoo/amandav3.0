@@ -36,4 +36,21 @@ export async function saveOrUpdateGroup(sock: WASocket, groupJid: string) {
     { $set: groupData, $setOnInsert: { createdAt: new Date() } },
     { upsert: true }
   );
+}
+
+/**
+ * // REFACTOR: Função extraída dos comandos inativos/novatos para reutilização.
+ * Busca os metadados de um grupo e retorna uma lista com os JIDs de todos os participantes.
+ * @param sock - A instância do socket Baileys.
+ * @param groupJid - O JID do grupo.
+ * @returns Uma Promise que resolve para um array de strings com os JIDs dos membros.
+ */
+export async function getGroupMembers(sock: WASocket, groupJid: string): Promise<string[]> {
+  try {
+    const meta = await sock.groupMetadata(groupJid);
+    return meta.participants.map(p => p.id);
+  } catch (error) {
+    console.error(`[groupUtils] Erro ao buscar membros do grupo ${groupJid}:`, error);
+    return []; // Retorna um array vazio em caso de erro.
+  }
 } 

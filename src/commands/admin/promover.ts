@@ -2,6 +2,7 @@ import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
 import { canUseCommand } from '@/utils/permissions';
 import { getUserDisplayName } from '@/utils/userUtils';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -10,19 +11,18 @@ const promoverCommand: ICommand = {
   description: 'Promove um usuário a admin (admin apenas).',
   category: 'admin',
   usage: '!promover @user',
-  execute: async (sock: WASocket, message: WAMessage, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message, args, from: groupJid, sender: userJid, isGroup } = context;
     try {
-    const groupJid = message.key.remoteJid!;
-    if (!groupJid.endsWith('@g.us')) {
-      await sock.sendMessage(groupJid, { text: 'Este comando só pode ser usado em grupos.' });
-      return;
-    }
+      if (!isGroup) {
+        await sock.sendMessage(groupJid, { text: 'Este comando só pode ser usado em grupos.' });
+        return;
+      }
 
-    const userJid = message.key.participant || '';
-    if (!await canUseCommand(sock, groupJid, userJid, 'admin')) {
-      await sock.sendMessage(groupJid, { text: 'Apenas admins podem usar este comando.' });
-      return;
-    }
+      if (!await canUseCommand(sock, groupJid, userJid, 'admin')) {
+        await sock.sendMessage(groupJid, { text: 'Apenas admins podem usar este comando.' });
+        return;
+      }
 
       // FIX: Verificar se o bot é admin do grupo
       const groupMetadata = await sock.groupMetadata(groupJid);
@@ -36,8 +36,8 @@ const promoverCommand: ICommand = {
         return;
       }
 
-    const mentioned = message.message?.extendedTextMessage?.contextInfo?.mentionedJid;
-    if (!mentioned || mentioned.length === 0) {
+      const mentioned = message.message?.extendedTextMessage?.contextInfo?.mentionedJid;
+      if (!mentioned || mentioned.length === 0) {
         await sock.sendMessage(groupJid, { 
           text: 'Ei, gracinha! 🫣 Marca quem você quer promover!\n\n💡 Exemplo: !promover @usuario' 
         });
@@ -54,8 +54,8 @@ const promoverCommand: ICommand = {
           text: `Eita, baby! 🫣 O @${targetName} já é admin! 😏`,
           mentions: [targetJid]
         });
-      return;
-    }
+        return;
+      }
 
       // FIX: Tentar promover com tratamento de erro
       try {
@@ -98,7 +98,7 @@ const promoverCommand: ICommand = {
       
     } catch (error) {
       console.error('[ERROR] Erro no comando promover:', error);
-      await sock.sendMessage(message.key.remoteJid!, { 
+      await sock.sendMessage(groupJid, { 
         text: 'Eita, baby! 🫣 Deu um erro inesperado! Tenta de novo! 💋' 
       });
     }

@@ -3,6 +3,7 @@ import { ICommand } from '@/interfaces/ICommand';
 import { GroupService } from '@/services/GroupService';
 import { container } from '@/core/container';
 import { TYPES } from '@/config/container';
+import { MessageContext } from '@/handlers/message.handler';
 
 const personCommand: ICommand = {
   name: 'person',
@@ -10,10 +11,14 @@ const personCommand: ICommand = {
   category: 'admin',
   usage: '!person [número|nome]',
   aliases: ['person', 'persons'],
-  execute: async (sock: WASocket, message: proto.IWebMessageInfo, args: string[]): Promise<void> => {
+  handle: async (context: MessageContext): Promise<void> => {
+    const { sock, messageInfo: message, args, from: groupJid, sender: senderJid, isGroup } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      const senderJid = message.key.participant!;
+      if (!isGroup) {
+        await sock.sendMessage(groupJid, { text: 'Este comando só funciona em grupos.' });
+        return;
+      }
+      
       const groupMetadata = await sock.groupMetadata(groupJid);
       const isAdmin = groupMetadata.participants.find(p => p.id === senderJid)?.admin;
       
@@ -95,7 +100,7 @@ const personCommand: ICommand = {
       
     } catch (error) {
       console.error('Erro ao executar comando person:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ Ops! Deu ruim na hora de mudar a personalidade. Tenta de novo mais tarde!'
       });
     }

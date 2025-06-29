@@ -1,14 +1,14 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const velhaometroCommand: ICommand = {
   name: 'velhaometro',
   description: 'Mede idade mental aleatória.',
   category: 'utils',
   usage: '!velhaometro',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const idade = Math.floor(Math.random() * 71) + 10; // 10 a 80 anos
     const numero = message.key.participant ? message.key.participant.split('@')[0] : message.key.remoteJid?.split('@')[0];
     const jid = message.key.participant || message.key.remoteJid;

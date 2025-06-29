@@ -11,18 +11,9 @@
     "moduleResolution": "Node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/core/*": ["src/core/*"],
-      "@/commands/*": ["src/commands/*"],
-      "@/services/*": ["src/services/*"],
-      "@/database/*": ["src/database/*"],
-      "@/interfaces/*": ["src/interfaces/*"],
-      "@/personalities/*": ["src/personalities/*"],
-      "@/utils/*": ["src/utils/*"],
-      "@/config/*": ["src/config/*"],
-      "@/config": ["src/config.ts"],
-      "@/index": ["src/index.ts"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*"],

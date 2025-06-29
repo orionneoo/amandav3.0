@@ -5,6 +5,7 @@ import { DatabaseService } from '@/services/DatabaseService';
 import { TYPES } from '@/config/container';
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = any;
 
@@ -22,7 +23,8 @@ export class RestoreCommand implements IInjectableCommand {
     @inject(TYPES.DatabaseService) private databaseService: DatabaseService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
     try {
       const senderJid = message.key.participant || message.key.remoteJid!;
       
@@ -48,7 +50,7 @@ export class RestoreCommand implements IInjectableCommand {
       const restoreOptions = this.parseArgs(args);
 
       if (restoreOptions.list) {
-        await this.listBackups(sock, message);
+        await this.listBackups(context);
         return;
       }
 
@@ -149,7 +151,8 @@ export class RestoreCommand implements IInjectableCommand {
     return options;
   }
 
-  private async listBackups(sock: WASocket, message: WAMessage): Promise<void> {
+  private async listBackups(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
     try {
       const backups = await this.getAvailableBackups();
 
@@ -245,37 +248,34 @@ export class RestoreCommand implements IInjectableCommand {
         return { success: false, error: `Backup ${targetBackup} não encontrado` };
       }
 
-      const backupStats = await fs.stat(backupPath);
-      if (!backupStats.isDirectory()) {
-        return { success: false, error: `${targetBackup} não é um diretório válido` };
-      }
-
-      // Listar arquivos do backup
-      const backupFiles = await this.getAllBackupFiles(backupPath);
-      
+      const files = await fs.readdir(backupPath);
       let restoredFiles = 0;
       let errors = 0;
       let totalSize = 0;
 
-      // Restaurar cada arquivo
-      for (const file of backupFiles) {
+      for (const fileName of files) {
         try {
-          const relativePath = path.relative(backupPath, file);
-          const targetPath = path.join('local_history', relativePath);
-          
-          // Criar diretório de destino se não existir
-          await fs.mkdir(path.dirname(targetPath), { recursive: true });
-          
-          // Copiar arquivo
-          await fs.copyFile(file, targetPath);
-          
-          const fileStats = await fs.stat(file);
-          totalSize += fileStats.size;
+          const filePath = path.join(backupPath, fileName);
+          const stats = await fs.stat(filePath);
+          const content = await fs.readFile(filePath, 'utf8');
+          const data = JSON.parse(content);
+
+          // Roteamento baseado no nome do arquivo
+          if (fileName.includes('messages')) {
+            for (const item of data) await this.databaseService.saveMessage(item);
+          } else if (fileName.includes('commands')) {
+            for (const item of data) await this.databaseService.saveCommandUsage(item.groupJid, item.command, item.user, item);
+          } else if (fileName.includes('errors')) {
+            for (const item of data) await this.databaseService.saveErrorLog(item);
+          }
+          // Adicionar outros tipos de restauração aqui (groups, users, etc.)
+
           restoredFiles++;
-          
-        } catch (error) {
-          console.error(`Erro ao restaurar ${file}:`, error);
+          totalSize += stats.size;
+
+        } catch (e) {
           errors++;
+          console.error(`Erro ao restaurar arquivo ${fileName}:`, e);
         }
       }
 
@@ -288,32 +288,20 @@ export class RestoreCommand implements IInjectableCommand {
 
     } catch (error) {
       console.error('Erro na restauração:', error);
-      return { success: false, error: (error as Error).message };
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : String(error)
+      };
     }
   }
 
   private async getAllBackupFiles(dirPath: string): Promise<string[]> {
-    const files: string[] = [];
-    
-    try {
-      const items = await fs.readdir(dirPath);
-      
-      for (const item of items) {
-        const fullPath = path.join(dirPath, item);
-        const stats = await fs.stat(fullPath);
-        
-        if (stats.isDirectory()) {
-          const subFiles = await this.getAllBackupFiles(fullPath);
-          files.push(...subFiles);
-        } else {
-          files.push(fullPath);
-        }
-      }
-    } catch (error) {
-      console.error(`Erro ao ler diretório ${dirPath}:`, error);
-    }
-    
-    return files;
+    const dirents = await fs.readdir(dirPath, { withFileTypes: true });
+    const files = await Promise.all(dirents.map((dirent) => {
+      const res = path.resolve(dirPath, dirent.name);
+      return dirent.isDirectory() ? this.getAllBackupFiles(res) : res;
+    }));
+    return Array.prototype.concat(...files);
   }
 
   private isOwner(participant: string): boolean {

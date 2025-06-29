@@ -3,6 +3,7 @@ import { IInjectableCommand } from '@/interfaces/ICommand';
 import { AIService } from '@/services/AIService';
 import { injectable, inject } from 'inversify';
 import { TYPES } from '@/config/container';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -19,9 +20,8 @@ export class FofocaCommand implements IInjectableCommand {
         @inject(TYPES.AIService) private aiService: AIService
     ) {}
 
-    public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-        const userJid = message.key.participant || message.key.remoteJid!;
-        const groupJid = message.key.remoteJid;
+    public async handle(context: MessageContext): Promise<void> {
+        const { sock, messageInfo: message, from: groupJid, sender: userJid, isGroup } = context;
         
         // Usar o AIService injetado para gerar fofoca
         const prompt = `Crie uma fofoca engraçada e maliciosa sobre o grupo, usando linguagem carioca e sendo debochada. A fofoca deve ser obviamente uma mentira absurda e engraçada.`;
@@ -31,8 +31,8 @@ export class FofocaCommand implements IInjectableCommand {
                 jid: userJid,
                 number: userJid.split('@')[0],
                 name: message.pushName || 'Usuário',
-                isGroup: groupJid?.endsWith('@g.us') || false,
-                groupJid: groupJid?.endsWith('@g.us') ? groupJid : undefined,
+                isGroup: isGroup,
+                groupJid: isGroup ? groupJid : undefined,
                 groupName: 'Grupo',
                 timestamp: Date.now(),
                 messageType: 'textMessage'
@@ -45,7 +45,7 @@ export class FofocaCommand implements IInjectableCommand {
             });
 
             if (fofoca) {
-                await sock.sendMessage(message.key.remoteJid!, {
+                await sock.sendMessage(groupJid, {
                     text: `${fofoca}\n\n💡 *Dica:* Este comando tem cooldown de 30s para evitar spam! ⏱️`
                 });
             } else {
@@ -59,13 +59,13 @@ export class FofocaCommand implements IInjectableCommand {
                 
                 const fofocaFallback = fofocasFallback[Math.floor(Math.random() * fofocasFallback.length)];
                 
-                await sock.sendMessage(message.key.remoteJid!, {
+                await sock.sendMessage(groupJid, {
                     text: `${fofocaFallback}\n\n💡 *Dica:* Este comando tem cooldown de 30s para evitar spam! ⏱️`
                 });
             }
         } catch (error) {
             console.error('Erro ao gerar fofoca:', error);
-            await sock.sendMessage(message.key.remoteJid!, {
+            await sock.sendMessage(groupJid, {
                 text: '❌ *Erro ao gerar fofoca*\n\nOpa, deu ruim na hora de criar a fofoca! Tenta de novo mais tarde! 😅 Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
             });
         }

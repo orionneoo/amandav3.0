@@ -1,4 +1,5 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -6,10 +7,10 @@ export interface ICommand {
   name: string;
   aliases?: string[];
   description: string;
-  category: 'ai' | 'admin' | 'utils' | 'general' | 'owner';
+  category: 'ai' | 'admin' | 'utils' | 'general' | 'owner' | 'game';
   usage: string;
   cooldown?: number; // Cooldown em segundos
-  execute: (sock: WASocket, message: WAMessage, args: string[]) => Promise<void>;
+  handle: (context: MessageContext) => Promise<void>;
 }
 
 // Interface para comandos injetáveis (classes)

@@ -1,14 +1,14 @@
 import { WASocket, proto, downloadMediaMessage } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const stickerCommand: ICommand = {
   name: 'sticker',
   description: 'Converte imagem em sticker (figurinha).',
   category: 'utils',
   usage: '!sticker (responda a uma imagem)',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid!;
     // Verifica se é reply a uma imagem
     const contextInfo = message.message?.extendedTextMessage?.contextInfo;

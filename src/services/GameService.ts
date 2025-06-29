@@ -1,8 +1,11 @@
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
 import { Game, IGame, ISubmission, IReaction } from '@/database/models/GameSchema';
 import { Group } from '@/database/models/GroupSchema';
+import { DatabaseService } from './DatabaseService';
 import { ErrorLogger } from '@/utils/errorLogger';
 import Logger from '@/utils/Logger';
+import { MessageContext } from '@/handlers/message.handler';
+import { TYPES } from '@/config/container';
 
 export interface SubmissionData {
   senderJid: string;
@@ -52,7 +55,59 @@ export interface MatchData {
 
 @injectable()
 export class GameService {
+  // MELHORIA: Singleton para acesso estático
+  private static instance: GameService;
+
+  constructor(
+    @inject(TYPES.DatabaseService) private dbService: DatabaseService
+  ) {
+    // MELHORIA: Atribuição do Singleton
+    GameService.instance = this;
+  }
   
+  /**
+   * // MELHORIA: Ponto de entrada estático para o roteador de mensagens.
+   * Processa uma mensagem privada para verificar se é uma submissão para um jogo ativo.
+   * @param context O contexto da mensagem.
+   * @returns `true` se a mensagem foi tratada como parte de um jogo, `false` caso contrário.
+   */
+  public static async processInput(context: MessageContext): Promise<boolean> {
+    // REFACTOR: A lógica de jogos só atua em mensagens privadas
+    if (context.isGroup) {
+      return false;
+    }
+    
+    try {
+      // Por enquanto, vamos focar no jogo de Confissão que é o mais comum no privado.
+      const activeGames = await this.instance.findActiveConfessionGamesForUser(context.sender);
+
+      if (activeGames.length === 0) {
+        return false; // Não há jogos ativos para este usuário, não faz nada.
+      }
+
+      console.log(`[GameService] Usuário ${context.sender} tem ${activeGames.length} jogos de confissão ativos.`);
+
+      if (activeGames.length === 1) {
+        const game = activeGames[0];
+        await this.instance.addConfession(game.groupId, {
+          senderJid: context.sender,
+          messageId: context.messageInfo.key.id!,
+          confession: context.text
+        });
+        await context.sock.sendMessage(context.from, { text: 'Sua confissão foi recebida e será enviada em breve! 🤫' });
+      } else {
+        // TODO: Implementar lógica de desambiguação para múltiplos jogos.
+        await context.sock.sendMessage(context.from, { text: 'Você está em múltiplos jogos de confissão. Esta funcionalidade ainda está em desenvolvimento.' });
+      }
+      
+      return true; // Mensagem foi processada pelo sistema de jogo.
+    } catch (error) {
+      console.error('[GameService] Erro ao processar input de jogo:', error);
+      await context.sock.sendMessage(context.from, { text: 'Ocorreu um erro ao processar sua confissão. Tente novamente.' });
+      return true; // Mesmo com erro, a intenção era de jogo, então o fluxo para aqui.
+    }
+  }
+
   /**
    * Cria um novo jogo ativo para um grupo
    */
@@ -828,6 +883,12 @@ export class GameService {
    */
   async findActiveConfessionGamesForUser(userJid: string): Promise<IGame[]> {
     try {
+      // NOVO: Verificar se o MongoDB está conectado antes de tentar acessá-lo
+      if (!this.dbService.isMongoConnected()) {
+        console.log('[GameService] MongoDB não está conectado, retornando lista vazia de jogos');
+        return [];
+      }
+
       // Busca todos os grupos onde o usuário é membro
       const userGroups = await Group.find({
         members: userJid

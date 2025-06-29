@@ -1,6 +1,7 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
 import cache from '@/core/CacheManager';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -10,15 +11,14 @@ const command: ICommand = {
   aliases: ['cachestats', 'cacheinfo'],
   category: 'admin',
   usage: '!cache [opção]',
-  async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-    const userJid = message.key.participant || message.key.remoteJid!;
-    const groupJid = message.key.remoteJid;
+  async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid } = context;
     
     // Verificar se é admin (implementar verificação de admin)
     const isAdmin = true; // TODO: Implementar verificação real
     
     if (!isAdmin) {
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ *Acesso Negado*\n\nVocê não tem permissão para usar este comando, meu bem! 😅'
       });
       return;
@@ -31,7 +31,7 @@ const command: ICommand = {
         case 'clear':
         case 'flush':
           cache.flush();
-          await sock.sendMessage(message.key.remoteJid!, {
+          await sock.sendMessage(groupJid, {
             text: '🗑️ *Cache Limpo*\n\nTodo o cache foi limpo com sucesso! ✨'
           });
           break;
@@ -42,7 +42,7 @@ const command: ICommand = {
             ? `📋 *Chaves no Cache (${keys.length}):*\n\n${keys.slice(0, 10).map(k => `• \`${k}\``).join('\n')}${keys.length > 10 ? `\n\n... e mais ${keys.length - 10} chaves` : ''}`
             : '📋 *Cache Vazio*\n\nNenhuma chave encontrada no cache.';
           
-          await sock.sendMessage(message.key.remoteJid!, { text: keysMessage });
+          await sock.sendMessage(groupJid, { text: keysMessage });
           break;
           
         default:
@@ -57,11 +57,11 @@ const command: ICommand = {
             `• \`!cache keys\` - Listar chaves\n` +
             `• \`!cache clear\` - Limpar cache`;
           
-          await sock.sendMessage(message.key.remoteJid!, { text: statsMessage });
+          await sock.sendMessage(groupJid, { text: statsMessage });
           break;
       }
     } catch (error) {
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ *Erro ao acessar cache*\n\nOpa, deu ruim na hora de verificar o cache! 😅\n\nSe não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
       });
     }

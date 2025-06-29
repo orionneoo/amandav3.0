@@ -1,8 +1,8 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-import { createValidatedCommand } from '@/utils/commandWrapper';
 import { getRandomInt } from '@/utils/random';
 import { getUserDisplayName } from '@/utils/userUtils';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -13,7 +13,8 @@ const crushometroCommand: ICommand = {
   description: 'Mede a chance de dar match com seu crush',
   category: 'utils',
   usage: '!crushometro @usuario',
-  execute: async (sock: WASocket, message: WAMessage, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     try {
       const groupJid = message.key.remoteJid!;
       const userJid = message.key.participant || message.key.remoteJid!;

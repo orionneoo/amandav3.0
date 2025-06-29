@@ -1,14 +1,14 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const cornometroCommand: ICommand = {
   name: 'cornometro',
   description: 'Mede nível de corno aleatório.',
   category: 'utils',
   usage: '!cornometro',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const pct = Math.floor(Math.random() * 101);
     const numero = message.key.participant ? message.key.participant.split('@')[0] : message.key.remoteJid?.split('@')[0];
     const jid = message.key.participant || message.key.remoteJid;

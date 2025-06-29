@@ -1,7 +1,6 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const fofocaCommand: ICommand = {
   name: 'fofoca',
@@ -10,7 +9,8 @@ const fofocaCommand: ICommand = {
   category: 'utils',
   usage: '!fofoca',
   cooldown: 30,
-  execute: async (sock: WASocket, message: WAMessage, args: string[]): Promise<void> => {
+  handle: async (context: MessageContext): Promise<void> => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid;
     
     const fofocasFallback = [

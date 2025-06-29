@@ -1,8 +1,6 @@
-import { CommandUsage } from '@/database/models/CommandUsageSchema';
 import { ICommand } from '@/interfaces/ICommand';
 import { WASocket, proto } from '@whiskeysockets/baileys';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const menuTextBase = `🌸 *Amanda v4.0.0* 🌸\n_Sua sexy working favorita no WhatsApp_\n\n*Criada por:* Orion\n\n💡 *Para falar comigo:*\n• Mencione @5521971200821\n• Ou responda a uma das minhas mensagens\n\n`;
 
@@ -54,7 +52,8 @@ const menuCommand: ICommand = {
   description: 'Exibe o menu de comandos e informações do bot.',
   category: 'utils',
   usage: '!menu [número_do_submenu]',
-  execute: async (sock: WASocket, message: WAMessage, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message, args } = context;
     const groupJid = message.key.remoteJid!;
     
     // Se passou argumento, mostrar submenu específico
@@ -70,74 +69,4 @@ const menuCommand: ICommand = {
   },
 };
 
-// Novo comando menusimples
-const menusimplesCommand: ICommand = {
-  name: 'menusimples',
-  aliases: ['lista', 'cmds'],
-  description: 'Lista todos os comandos de forma simples e organizada.',
-  category: 'utils',
-  usage: '!menusimples',
-  execute: async (sock: WASocket, message: proto.IWebMessageInfo) => {
-    const comandos = [
-      '**!menu**',
-      '**!menusimples**',
-      '**!ping**',
-      '**!status**',
-      '**!sticker**',
-      '**!coinflip**',
-      '**!resumo**',
-      '**!tempo**',
-      '**!weather**',
-      '**!teste**',
-      '**!ppp**',
-      '**!fodeousome**',
-      '**!bafometro**',
-      '**!gaydometro**',
-      '**!cornometro**',
-      '**!sexyometro**',
-      '**!sorte**',
-      '**!crushometro @user**',
-      '**!nojoometro**',
-      '**!nerdometro**',
-      '**!velhaometro**',
-      '**!par**',
-      '**!casal**',
-      '**!menage**',
-      '**!suruba**',
-      '**!fofoca**',
-      '**!intriga**',
-      '**!banir @user**',
-      '**!remover @user**',
-      '**!promover @user**',
-      '**!rebaixar @user**',
-      '**!silenciar**',
-      '**!liberar**',
-      '**!apagar**',
-      '**!desbanir @user**',
-      '**!admins**',
-      '**!boasvindas**',
-      '**!brincadeira**',
-      '**!topativos [dias]**',
-      '**!inativos [dias]**',
-      '**!novatos [dias]**',
-      '**!person**',
-      '**!personalidade**',
-      '**!grupo**',
-      '**!comandos**',
-      '**!ia**',
-      '**!erros**',
-      '**!cache**',
-      '**!logs**',
-      '**!time**',
-      '**!feedback**',
-      '**!dono**',
-      '**!usuarios**',
-      '**!sync**',
-    ];
-    const texto = '*📋 Comandos disponíveis:*\n' + comandos.join('  |  ');
-    await sock.sendMessage(message.key.remoteJid!, { text: texto });
-  },
-};
-
-export default menuCommand;
-export { menusimplesCommand }; 
+export default menuCommand; 

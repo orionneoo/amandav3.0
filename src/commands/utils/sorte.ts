@@ -1,7 +1,6 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const sortes = [
   'Hoje é um bom dia para tentar algo novo!',
@@ -21,7 +20,8 @@ const sorteCommand: ICommand = {
   description: 'Dá um conselho ou sorte do dia.',
   category: 'utils',
   usage: '!sorte',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const frase = sortes[Math.floor(Math.random() * sortes.length)];
     await sock.sendMessage(message.key.remoteJid!, { text: `🔮 ${frase} ✨` });
   },

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { config } from '@/config';
+import { config } from '@/config/index';
 import { injectable, inject } from 'inversify';
 import Logger from '@/utils/Logger';
 import { Message, IMessage } from '@/database/models/MessageSchema';
@@ -26,32 +26,43 @@ export class DatabaseService {
   }
 
   public async connect(): Promise<void> {
-    if (mongoose.connection.readyState === 0) { // 0 = disconnected
-      console.log('Conectando ao MongoDB Atlas...');
-      try {
-        if (!config.mongodb.uri) {
-          throw new Error('MONGODB_URI não está configurada no ambiente.');
-        }
-        
-        // Usar configurações de timeout e conexão
-        const connectionOptions = {
-          dbName: config.mongodb.database,
-          ...config.mongodb.options
-        };
-        
-        await mongoose.connect(config.mongodb.uri, connectionOptions);
-        this.isConnected = true;
-        DatabaseFallback.markSuccess();
-        DatabaseStatus.getInstance().markSuccess();
-        console.log('Conexão com MongoDB Atlas estabelecida!');
-      } catch (error) {
-        this.isConnected = false;
-        DatabaseFallback.addOperation('connect', { error });
-        DatabaseStatus.getInstance().markFailure();
-        console.error('Erro ao conectar ao MongoDB Atlas:', error);
-        this.logger.error('Falha na conexão com MongoDB, usando fallback local', { error });
-        // Não encerra o processo, usa fallback local
-      }
+    if (mongoose.connection.readyState === 1) {
+      console.log('Já conectado ao MongoDB Atlas!');
+      return;
+    }
+
+    console.log('Conectando ao MongoDB Atlas...');
+    try {
+      const mongodbUri = config.database?.mongodbUri;
+      if (!mongodbUri) throw new Error('MONGODB_URI não está configurada!');
+      const databaseName = config.database?.mongodbName || 'amandanova';
+      const connectionOptions = {
+        dbName: databaseName,
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 10000,
+        connectTimeoutMS: 10000,
+        maxPoolSize: 10,
+        minPoolSize: 1,
+        maxIdleTimeMS: 30000,
+        retryWrites: true,
+        retryReads: true,
+        readPreference: 'primaryPreferred' as const,
+      };
+      // LOG DETALHADO
+      console.log('[DB-CONNECT] URI:', mongodbUri.replace(/:([^:]+)@/, ':*****@'));
+      console.log('[DB-CONNECT] Opções:', connectionOptions);
+      await mongoose.connect(mongodbUri, connectionOptions);
+      this.isConnected = true;
+      DatabaseFallback.markSuccess();
+      DatabaseStatus.getInstance().markSuccess();
+      console.log('Conexão com MongoDB Atlas estabelecida!');
+    } catch (error) {
+      this.isConnected = false;
+      DatabaseFallback.addOperation('connect', { error });
+      DatabaseStatus.getInstance().markFailure();
+      console.error('[DB-CONNECT] Erro ao conectar ao MongoDB Atlas:', error);
+      this.logger.error('Falha na conexão com MongoDB, usando fallback local', { error });
+      // Não encerra o processo, usa fallback local
     }
   }
 

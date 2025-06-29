@@ -24,6 +24,7 @@ export { donaDoJogoPersonality } from './dona_do_jogo';
 export { groupPersonality } from './group';
 export { defaultPersonality } from './default';
 export { sysLightPersonality } from './sys_light';
+export { privatePersonality } from './private';
 
 // Mapa de todas as personalidades para fácil acesso
 export const PERSONALIDADES_MAP = {
@@ -49,7 +50,8 @@ export const PERSONALIDADES_MAP = {
   dona_do_jogo: 'donaDoJogoPersonality',
   group: 'groupPersonality',
   default: 'defaultPersonality',
-  sys_light: 'sysLightPersonality'
+  sys_light: 'sysLightPersonality',
+  private: 'privatePersonality'
 } as const;
 
 // Lista de todas as personalidades disponíveis

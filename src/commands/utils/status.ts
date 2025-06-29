@@ -1,8 +1,5 @@
-import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-import { createValidatedCommand } from '@/utils/commandWrapper';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 // FIX: Comando de status com tratamento de erro robusto
 const statusCommand: ICommand = {
@@ -11,7 +8,8 @@ const statusCommand: ICommand = {
   description: 'Mostra o status e saúde do bot',
   category: 'utils',
   usage: '!status [detalhado]',
-  execute: async (sock: WASocket, message: WAMessage, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message, args } = context;
     try {
       const groupJid = message.key.remoteJid!;
       const isDetailed = args.includes('detalhado') || args.includes('detailed');
@@ -95,7 +93,4 @@ const statusCommand: ICommand = {
 };
 
 // FIX: Exportar comando protegido automaticamente
-export default createValidatedCommand(statusCommand, {
-  maxArgs: 2,
-  optionalArgs: ['detalhado', 'detailed']
-}); 
+export default statusCommand; 

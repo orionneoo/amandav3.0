@@ -8,6 +8,7 @@ import { Group } from '@/database/models/GroupSchema';
 import { UserSession } from '@/database/UserSessionSchema';
 import { CacheService } from '@/services/CacheService';
 import { TYPES } from '@/config/container';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -233,10 +234,13 @@ Responda como se fosse a Amanda na nova personalidade confirmando a mudança.`;
     }
   }
 
-  public async execute(sock: WASocket, message: proto.IWebMessageInfo, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: senderJid, isGroup } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      const senderJid = message.key.participant!;
+      if (!isGroup) {
+        await sock.sendMessage(groupJid, { text: 'Este comando só funciona em grupos.' });
+        return;
+      }
       const groupMetadata = await sock.groupMetadata(groupJid);
       const isAdmin = groupMetadata.participants.find(p => p.id === senderJid)?.admin;
       
@@ -286,22 +290,21 @@ Responda como se fosse a Amanda na nova personalidade confirmando a mudança.`;
       await UserSession.updateOne({ jid: groupJid }, { chatHistory: [] });
       
       const senderInfo = {
-        name: message.pushName || 'Admin',
+        name: message.pushName,
         number: senderJid.split('@')[0],
-        jid: senderJid,
-        isGroup: true,
-        groupJid: groupJid,
-        groupName: groupMetadata.subject,
-        timestamp: Date.now(),
-        messageType: 'textMessage'
+        jid: senderJid
       };
       
+      // Limpar histórico ao mudar de personalidade
+      await this.groupService.clearGroupChatHistory(groupJid, `Mudança de personalidade para ${novaPersonalidade.toUpperCase()}`);
+      
       const confirmacao = await this.gerarMensagemConfirmacao(novaPersonalidade, groupJid, senderInfo);
+      
       await sock.sendMessage(groupJid, { text: confirmacao });
       
     } catch (error) {
       console.error('Erro ao executar comando personalidade:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ Ops! Deu ruim na hora de mudar a personalidade. Tenta de novo mais tarde!'
       });
     }

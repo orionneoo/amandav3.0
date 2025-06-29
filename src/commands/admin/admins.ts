@@ -1,5 +1,6 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -8,9 +9,9 @@ const adminsCommand: ICommand = {
   description: 'Lista todos os admins do grupo.',
   category: 'admin',
   usage: '!admins',
-  execute: async (sock: WASocket, message: WAMessage) => {
-    const groupJid = message.key.remoteJid!;
-    if (!groupJid.endsWith('@g.us')) {
+  handle: async (context: MessageContext) => {
+    const { sock, from: groupJid, isGroup } = context;
+    if (!isGroup) {
       await sock.sendMessage(groupJid, { text: 'Este comando só pode ser usado em grupos.' });
       return;
     }

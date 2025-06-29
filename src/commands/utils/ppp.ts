@@ -1,13 +1,15 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
 import { sortearMembros } from '@/utils/sorteioUtils';
+import { MessageContext } from '@/handlers/message.handler';
 
 const pppCommand: ICommand = {
   name: 'ppp',
   description: 'Sorteia 3 pessoas do grupo para o clássico pega, pensa e passa.',
   category: 'utils',
   usage: '!ppp',
-  execute: async (sock: WASocket, message: proto.IWebMessageInfo) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid!;
     if (!groupJid.endsWith('@g.us')) {
       await sock.sendMessage(groupJid, { text: 'Esse comando só funciona em grupos!' });

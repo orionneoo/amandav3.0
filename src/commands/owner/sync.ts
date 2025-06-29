@@ -4,6 +4,7 @@ import { injectable, inject } from 'inversify';
 import { GroupService } from '@/services/GroupService';
 import { OwnerService } from '@/services/OwnerService';
 import { TYPES } from '@/config/container';
+import { MessageContext } from '@/handlers/message.handler';
 
 @injectable()
 export class SyncCommand implements IInjectableCommand {
@@ -19,7 +20,8 @@ export class SyncCommand implements IInjectableCommand {
     @inject(TYPES.OwnerService) private ownerService: OwnerService
   ) {}
 
-  public async execute(sock: WASocket, message: proto.IWebMessageInfo, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
     try {
       const senderJid = message.key.participant || message.key.remoteJid!;
       

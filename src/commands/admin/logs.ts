@@ -4,6 +4,7 @@ import Logger from '@/utils/Logger';
 import fs from 'fs/promises';
 import path from 'path';
 import { DatabaseStatus } from '@/utils/databaseStatus';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -22,15 +23,14 @@ const command: ICommand = {
   aliases: ['log', 'estatisticas', 'stats'],
   category: 'admin',
   usage: '!logs [opção]',
-  async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-    const userJid = message.key.participant || message.key.remoteJid!;
-    const groupJid = message.key.remoteJid;
+  async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, sender: userJid, from: groupJid } = context;
     
     // Verificar se é admin (implementar verificação de admin)
     const isAdmin = true; // TODO: Implementar verificação real
     
     if (!isAdmin) {
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ *Acesso Negado*\n\nVocê não tem permissão para usar este comando, meu bem! 😅'
       });
       return;
@@ -38,7 +38,7 @@ const command: ICommand = {
 
     // Verificar se o banco está offline
     if (DatabaseStatus.getInstance().isDatabaseOffline()) {
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: DatabaseStatus.getInstance().getOfflineMessage('Logs')
       });
       return;
@@ -76,7 +76,7 @@ const command: ICommand = {
         metadata: { option, args }
       });
 
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ *Erro na Análise*\n\nOpa, deu ruim na hora de analisar os logs! 😅\n\nTente novamente ou me avise se o problema persistir! Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
       });
     }

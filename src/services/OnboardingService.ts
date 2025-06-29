@@ -9,6 +9,9 @@ export class OnboardingService {
   // NOVO: Cache para evitar envios duplicados
   private sentPromotions = new Map<string, number>();
   private readonly PROMOTION_CACHE_TIME = 24 * 60 * 60 * 1000; // 24 horas
+  // NOVO: Cache para onboarding de grupo
+  private sentGroupOnboarding = new Map<string, number>(); // groupJid -> timestamp
+  private readonly GROUP_ONBOARDING_CACHE_TIME = 24 * 60 * 60 * 1000; // 24 horas
 
   /**
    * Envia mensagem de onboarding para novos admins
@@ -97,6 +100,12 @@ export class OnboardingService {
    * Envia mensagem de onboarding quando o bot entra em um novo grupo
    */
   public async sendGroupOnboarding(sock: WASocket, groupJid: string): Promise<void> {
+    const now = Date.now();
+    const lastSent = this.sentGroupOnboarding.get(groupJid);
+    if (typeof lastSent === 'number' && (now - lastSent) < this.GROUP_ONBOARDING_CACHE_TIME) {
+      // Já enviou onboarding para este grupo nas últimas 24h
+      return;
+    }
     try {
       const groupMetadata = await sock.groupMetadata(groupJid);
       const groupName = groupMetadata.subject;
@@ -145,7 +154,8 @@ export class OnboardingService {
       }
 
       onboardingDebug(`[ONBOARDING] Enviado onboarding para grupo ${groupName} (${groupJid})`);
-      
+      // Registrar envio
+      this.sentGroupOnboarding.set(groupJid, now);
     } catch (error) {
       await ErrorLogger.logError(error as Error, {
         groupJid,
@@ -156,22 +166,36 @@ export class OnboardingService {
   }
 
   /**
+   * Verifica no cache se uma mensagem de promoção já foi enviada recentemente.
+   * @param userJid JID do usuário
+   * @param groupJid JID do grupo
+   * @returns `true` se a promoção já foi enviada, `false` caso contrário.
+   */
+  public hasPromotionBeenSent(userJid: string, groupJid: string): boolean {
+    const cacheKey = `${userJid}-${groupJid}`;
+    const now = Date.now();
+    const lastSent = this.sentPromotions.get(cacheKey);
+
+    if (typeof lastSent === 'number' && (now - lastSent) < this.PROMOTION_CACHE_TIME) {
+      const hoursSince = Math.floor((now - lastSent) / (60 * 60 * 1000));
+      onboardingDebug(`Mensagem de promoção já enviada há ${hoursSince}h para ${userJid} no grupo ${groupJid}. Ignorando.`);
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Envia onboarding para um admin específico quando promovido
    */
   public async sendPromotionOnboarding(sock: WASocket, adminJid: string, groupJid: string): Promise<void> {
     return; // Desativado temporariamente a pedido do usuário
     try {
       // NOVO: Verificar cache antes de enviar
-      const cacheKey = `${adminJid}-${groupJid}`;
-      const now = Date.now();
-      const lastSent = this.sentPromotions.get(cacheKey);
-      
-      if (lastSent && (now - lastSent) < this.PROMOTION_CACHE_TIME) {
-        const hoursSince = Math.floor((now - lastSent) / (60 * 60 * 1000));
-        onboardingDebug(`Mensagem de promoção já enviada há ${hoursSince}h para ${adminJid} no grupo ${groupJid}. Ignorando.`);
+      if (this.hasPromotionBeenSent(adminJid, groupJid)) {
         return;
       }
 
+      const now = Date.now();
       const groupMetadata = await sock.groupMetadata(groupJid);
       const groupName = groupMetadata.subject;
       const adminName = groupMetadata.participants.find(p => p.id === adminJid)?.name || adminJid.split('@')[0];
@@ -216,4 +240,23 @@ export class OnboardingService {
         `🎯 *Precisa de ajuda?*\n` +
         `• Contato: *21 96723-3931*\n` +
         `• Use \`!feedback\` para sugestões\n\n` +
-        `
+        `🚀 *Boa sorte administrando o grupo!* 😉`;
+
+      // NOVO: Atualizar cache após enviar
+      const cacheKey = `${adminJid}-${groupJid}`;
+      this.sentPromotions.set(cacheKey, now);
+
+      await sock.sendMessage(adminJid, { text: promotionMessage });
+      
+      onboardingDebug(`[ONBOARDING] Enviado onboarding de promoção para ${adminName} (${adminJid}) no grupo ${groupName}`);
+      
+    } catch (error) {
+      await ErrorLogger.logError(error as Error, {
+        jid: adminJid,
+        groupJid,
+        action: 'send_promotion_onboarding'
+      });
+      console.error('[ERROR] Erro ao enviar onboarding de promoção para admin:', error);
+    }
+  }
+}

@@ -3,13 +3,15 @@ import { ICommand } from '@/interfaces/ICommand';
 import { perguntasHardcore } from '@/utils/perguntasHardcore';
 import { sortearMembros } from '@/utils/sorteioUtils';
 import { getUserDisplayName } from '@/utils/userUtils';
+import { MessageContext } from '@/handlers/message.handler';
 
 const fodeousomeCommand: ICommand = {
   name: 'fodeousome',
   description: 'Modo hardcore: faz uma pergunta quente para um alvo aleatório ou marcado.',
   category: 'utils',
   usage: '!fodeousome [@alvo]',
-  execute: async (sock: WASocket, message: proto.IWebMessageInfo, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid!;
     if (!groupJid.endsWith('@g.us')) {
       await sock.sendMessage(groupJid, { text: 'Esse comando só funciona em grupos!' });

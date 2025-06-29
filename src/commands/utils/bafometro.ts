@@ -1,14 +1,14 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const bafometroCommand: ICommand = {
   name: 'bafometro',
   description: 'Mede seu nível de álcool aleatório.',
   category: 'utils',
   usage: '!bafometro',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const nivel = (Math.random() * 12.5).toFixed(1);
     const numero = message.key.participant ? message.key.participant.split('@')[0] : message.key.remoteJid?.split('@')[0];
     const jid = message.key.participant || message.key.remoteJid;

@@ -3,6 +3,7 @@ import { IInjectableCommand } from '@/interfaces/ICommand';
 import { Group } from '@/database/models/GroupSchema';
 import { canUseCommand } from '@/utils/permissions';
 import { injectable } from 'inversify';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -14,11 +15,10 @@ export class BoasvindasCommand implements IInjectableCommand {
   public usage = '!boasvindas [on/off]';
   public aliases = ['welcome', 'bemvindo'];
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-    const groupJid = message.key.remoteJid!;
-    const userJid = message.key.participant || '';
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: userJid, isGroup } = context;
     
-    if (!groupJid.endsWith('@g.us')) {
+    if (!isGroup) {
       await sock.sendMessage(groupJid, { text: 'Este comando só pode ser usado em grupos.' });
       return;
     }
@@ -81,7 +81,7 @@ export class BoasvindasCommand implements IInjectableCommand {
     } catch (error) {
       console.error('Erro ao configurar boas-vindas:', error);
       await sock.sendMessage(groupJid, { 
-        text: '❌ Erro ao configurar as mensagens. Tente novamente mais tarde. Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! ��' 
+        text: '❌ Erro ao configurar as mensagens. Tente novamente mais tarde. Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧' 
       });
     }
   }

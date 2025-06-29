@@ -1,5 +1,5 @@
 import { injectable, inject } from 'inversify';
-import { WASocket } from '@whiskeysockets/baileys';
+import { WASocket, proto } from '@whiskeysockets/baileys';
 import { IInjectableCommand } from '@/interfaces/ICommand';
 import { DatabaseService } from '@/services/DatabaseService';
 import { DailySummaryService } from '@/services/DailySummaryService';
@@ -7,8 +7,9 @@ import { GroupService } from '@/services/GroupService';
 import { TYPES } from '@/config/container';
 import { getUserDisplayName } from '@/utils/userUtils';
 import { DatabaseStatus } from '@/utils/databaseStatus';
+import { MessageContext } from '@/handlers/message.handler';
 
-type WAMessage = any;
+type WAMessage = proto.IWebMessageInfo;
 
 @injectable()
 export class AnalyticsCommand implements IInjectableCommand {
@@ -26,14 +27,12 @@ export class AnalyticsCommand implements IInjectableCommand {
     @inject(TYPES.GroupService) private groupService: GroupService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: senderJid, isGroup } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      const senderJid = message.key.participant!;
-
       // Verificar se é grupo
-      if (!groupJid.endsWith('@g.us')) {
-        await sock.sendMessage(message.key.remoteJid!, {
+      if (!isGroup) {
+        await sock.sendMessage(groupJid, {
           text: '❌ Este comando só funciona em grupos!'
         });
         return;
@@ -95,7 +94,7 @@ export class AnalyticsCommand implements IInjectableCommand {
 
     } catch (error) {
       console.error('[ERROR] Erro no comando analytics:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ Erro ao gerar análise. Tente novamente em alguns segundos.'
       });
     }

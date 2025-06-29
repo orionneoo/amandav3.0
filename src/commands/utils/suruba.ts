@@ -1,14 +1,14 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const surubaCommand: ICommand = {
   name: 'suruba',
   description: 'Marca 5 pessoas aleatórias do grupo para transar com você.',
   category: 'utils',
   usage: '!suruba',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid!;
     if (!groupJid.endsWith('@g.us')) {
       await sock.sendMessage(groupJid, { text: 'Esse comando só funciona em grupos!' });

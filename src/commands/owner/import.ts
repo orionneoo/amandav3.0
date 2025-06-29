@@ -6,6 +6,7 @@ import { TYPES } from '@/config/container';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { DatabaseStatus } from '@/utils/databaseStatus';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = any;
 
@@ -23,13 +24,19 @@ export class ImportCommand implements IInjectableCommand {
     @inject(TYPES.DatabaseService) private databaseService: DatabaseService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo, args } = context;
     try {
-      const senderJid = message.key.participant || message.key.remoteJid!;
+      const senderJid = messageInfo.key.participant || messageInfo.key.remoteJid;
+      const remoteJid = messageInfo.key.remoteJid;
+
+      if (!remoteJid || !senderJid) {
+        return;
+      }
       
       // Verificar se é o dono
       if (!this.isOwner(senderJid)) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: '❌ Este comando é exclusivo do dono do bot!'
         });
         return;
@@ -37,7 +44,7 @@ export class ImportCommand implements IInjectableCommand {
 
       // Verificar se o banco está offline
       if (DatabaseStatus.getInstance().isDatabaseOffline()) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: DatabaseStatus.getInstance().getOfflineMessage('Import')
         });
         return;
@@ -47,17 +54,17 @@ export class ImportCommand implements IInjectableCommand {
       const importOptions = this.parseArgs(args);
 
       if (importOptions.help) {
-        await this.showHelp(sock, message);
+        await this.showHelp(sock, messageInfo);
         return;
       }
 
       if (importOptions.list) {
-        await this.listImportFiles(sock, message);
+        await this.listImportFiles(sock, messageInfo);
         return;
       }
 
       if (!importOptions.file) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: '❌ *Arquivo não especificado!*\n\n' +
                 '💡 *Exemplos:*\n' +
                 '• `!import` (lista arquivos)\n' +
@@ -69,7 +76,7 @@ export class ImportCommand implements IInjectableCommand {
       }
 
       if (!importOptions.confirm) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: `⚠️ *CONFIRMAÇÃO NECESSÁRIA*\n\n` +
                 `Você está prestes a importar:\n` +
                 `📁 ${importOptions.file}\n\n` +
@@ -83,7 +90,7 @@ export class ImportCommand implements IInjectableCommand {
         return;
       }
 
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(remoteJid, {
         text: '📥 Iniciando importação...'
       });
 
@@ -109,9 +116,9 @@ export class ImportCommand implements IInjectableCommand {
           `3. Use \`!dono status\` para verificar\n\n` +
           `💡 Use \`!estatisticas\` para ver os novos dados`;
 
-        await sock.sendMessage(message.key.remoteJid!, { text: resultMessage });
+        await sock.sendMessage(remoteJid, { text: resultMessage });
       } else {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: `❌ *ERRO NA IMPORTAÇÃO*\n\n` +
                 `📁 Arquivo: ${importOptions.file}\n` +
                 `❌ Erro: ${result.error}\n\n` +
@@ -124,9 +131,11 @@ export class ImportCommand implements IInjectableCommand {
 
     } catch (error) {
       console.error('[ERROR] Erro no comando import:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
-        text: '❌ Erro ao importar dados. Verifique os logs do servidor.'
-      });
+      if (messageInfo.key.remoteJid) {
+        await sock.sendMessage(messageInfo.key.remoteJid, {
+          text: '❌ Erro ao importar dados. Verifique os logs do servidor.'
+        });
+      }
     }
   }
 

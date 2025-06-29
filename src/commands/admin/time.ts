@@ -4,6 +4,7 @@ import { canUseCommand } from '@/utils/permissions';
 import { getUserDisplayName } from '@/utils/userUtils';
 import * as fs from 'fs';
 import * as path from 'path';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -121,17 +122,16 @@ const timeCommand: ICommand = {
   description: 'Inicia um temporizador que remove quem não enviar mídia (confirmação dupla)',
   category: 'admin',
   usage: '!time on [minutos] - Inicia temporizador\n!time off - Para temporizador\n!time status - Status atual',
-  execute: async (sock: WASocket, message: WAMessage, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message, args, from: groupJid, sender: userJid, isGroup } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      if (!groupJid.endsWith('@g.us')) {
+      if (!isGroup) {
         await sock.sendMessage(groupJid, { 
           text: 'Eita, baby! 🫣 O !time só funciona em grupos! 💋' 
         });
         return;
       }
 
-      const userJid = message.key.participant || '';
       if (!await canUseCommand(sock, groupJid, userJid, 'admin')) {
         await sock.sendMessage(groupJid, { 
           text: 'Eita, amor! 🚫 Esse comando !time é só pra admins. Você não tem essa permissão ainda.' 
@@ -433,8 +433,8 @@ const timeCommand: ICommand = {
 
     } catch (error) {
       console.error('[ERROR] Erro no comando time:', error);
-      await sock.sendMessage(message.key.remoteJid!, { 
-        text: 'Eita, baby! 🫣 Deu erro ao finalizar o prazo de mídia! Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧' 
+      await sock.sendMessage(groupJid, { 
+        text: 'Eita, baby! 🫣 Deu erro no comando !time! Tenta de novo! 💋' 
       });
     }
   },

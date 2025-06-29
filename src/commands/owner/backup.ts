@@ -3,8 +3,7 @@ import { WASocket } from '@whiskeysockets/baileys';
 import { IInjectableCommand } from '@/interfaces/ICommand';
 import { DatabaseService } from '@/services/DatabaseService';
 import { TYPES } from '@/config/container';
-
-type WAMessage = any;
+import { MessageContext } from '@/handlers/message.handler';
 
 @injectable()
 export class BackupCommand implements IInjectableCommand {
@@ -20,7 +19,8 @@ export class BackupCommand implements IInjectableCommand {
     @inject(TYPES.DatabaseService) private databaseService: DatabaseService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
     try {
       const senderJid = message.key.participant || message.key.remoteJid!;
       

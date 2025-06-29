@@ -1,7 +1,6 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const pingCommand: ICommand = {
   name: 'ping',
@@ -9,7 +8,8 @@ const pingCommand: ICommand = {
   description: 'Responde com Pong! (versão divertida)',
   category: 'utils',
   usage: '!ping',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const pongArt = '🏓\n';
     await sock.sendMessage(message.key.remoteJid!, { text: pongArt + '\nPong!' });
   },

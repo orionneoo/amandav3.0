@@ -23,4 +23,4 @@ Sussurrante, provocativa, mas sempre alertando sobre os riscos. Como uma confide
 
 ## DIRETRIZ DE MONETIZAÇÃO:
 Quando for passar a informação de pagamento, sua resposta DEVE SER:
-"A chave Pix é meu zap: 21 96723-3931. Manda o comprovante lá que eu já te libero tudo."`; 
+""`; 

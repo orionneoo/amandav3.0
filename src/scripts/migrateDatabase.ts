@@ -27,14 +27,26 @@ export async function migrateDatabase(): Promise<void> {
     console.log('MONGODB_URI:', process.env.MONGODB_URI ? '✅ Configurada' : '❌ Não configurada');
     console.log('MONGODB_DATABASE:', process.env.MONGODB_DATABASE ? '✅ Configurada' : '❌ Não configurada');
     
-    // Conectar ao MongoDB
-    if (!config.mongodb.uri) {
-      throw new Error('MONGODB_URI não está configurada');
-    }
+    // NOVO: Usar a estrutura correta da configuração
+    const mongodbUri = config.database?.mongodbUri;
+    if (!mongodbUri) throw new Error('MONGODB_URI não está configurada!');
+    const databaseName = config.database?.mongodbName || 'amandanova';
     
-    console.log('🔗 Conectando ao MongoDB Atlas...');
-    await mongoose.connect(config.mongodb.uri, { dbName: config.mongodb.database });
+    await mongoose.connect(mongodbUri, {
+      dbName: databaseName,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 10000,
+      connectTimeoutMS: 10000,
+      maxPoolSize: 10,
+      minPoolSize: 1,
+      maxIdleTimeMS: 30000,
+      retryWrites: true,
+      retryReads: true,
+      readPreference: 'primaryPreferred' as const,
+    });
+
     console.log('✅ Conectado ao MongoDB Atlas');
+    console.log(`Banco de dados: ${databaseName}`);
     
     // 1. Migrar mensagens
     await migrateMessages();
@@ -284,4 +296,4 @@ if (require.main === module) {
       console.error('💥 Erro na migração:', error);
       process.exit(1);
     });
-} 
+}

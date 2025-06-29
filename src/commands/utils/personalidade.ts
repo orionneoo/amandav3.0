@@ -1,6 +1,7 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
 import { Group } from '@/database/models/GroupSchema';
+import { MessageContext } from '@/handlers/message.handler';
 
 const personalidadeCommand: ICommand = {
   name: 'personalidade',
@@ -9,7 +10,8 @@ const personalidadeCommand: ICommand = {
   category: 'utils',
   usage: '!personalidade',
   cooldown: 10,
-  execute: async (sock: WASocket, message: proto.IWebMessageInfo, args: string[]): Promise<void> => {
+  handle: async (context: MessageContext): Promise<void> => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid;
     
     try {

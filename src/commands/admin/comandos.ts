@@ -3,6 +3,7 @@ import { IInjectableCommand } from '@/interfaces/ICommand';
 import { injectable, inject } from 'inversify';
 import { GroupService } from '@/services/GroupService';
 import { TYPES } from '@/config/container';
+import { MessageContext } from '@/handlers/message.handler';
 
 @injectable()
 export class ComandosCommand implements IInjectableCommand {
@@ -17,13 +18,11 @@ export class ComandosCommand implements IInjectableCommand {
     @inject(TYPES.GroupService) private groupService: GroupService
   ) {}
 
-  public async execute(sock: WASocket, message: proto.IWebMessageInfo, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: senderJid, isGroup } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      const senderJid = message.key.participant!;
-      
-      if (!groupJid?.endsWith('@g.us')) {
-        await sock.sendMessage(message.key.remoteJid!, {
+      if (!isGroup) {
+        await sock.sendMessage(groupJid, {
           text: '❌ Este comando só funciona em grupos!'
         });
         return;
@@ -132,7 +131,7 @@ export class ComandosCommand implements IInjectableCommand {
       
     } catch (error) {
       console.error('Erro ao executar comando comandos:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ Ops! Deu ruim na hora de gerenciar comandos. Tenta de novo mais tarde!'
       });
     }

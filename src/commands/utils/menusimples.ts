@@ -1,13 +1,15 @@
 import { ICommand } from '@/interfaces/ICommand';
-import { WASocket, proto } from '@whiskeysockets/baileys';
+import { proto } from '@whiskeysockets/baileys';
+import { MessageContext } from '@/handlers/message.handler';
 
 const menusimplesCommand: ICommand = {
   name: 'menusimples',
   description: 'Lista todos os comandos de forma simples e organizada.',
   category: 'utils',
   usage: '!menusimples',
-  execute: async (sock: WASocket, message: proto.IWebMessageInfo) => {
-    const menuText = `*�� COMANDOS DA AMANDA v4.0.0 - MENU SIMPLES* 🤖
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
+    const menuText = `* COMANDOS DA AMANDA v4.0.0 - MENU SIMPLES* 🤖
 
 *🛠️ UTILITÁRIOS*
 !menu | !menusimples | !ping | !status | !sticker | !coinflip | !resumo | !tempo | !weather | !teste

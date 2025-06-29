@@ -1,158 +1,223 @@
-# Amanda - Bot de WhatsApp com IA, Comandos, Onboarding e Feedback
+# 🤖 Amanda Bot - WhatsApp AI Assistant
 
-Amanda é um bot de WhatsApp em Node.js/TypeScript, com integração Gemini AI, MongoDB Atlas, arquitetura plug-and-play para comandos, foco em grupos, diversão, utilidade e administração. Ela tem onboarding inteligente para admins, comando de feedback direto para o dono, contexto persistente e respostas naturais, sempre com um toque carioca e provocador.
+Um bot inteligente para WhatsApp desenvolvido em TypeScript, com integração com Gemini AI, MongoDB Atlas e sistema avançado de captura de visualizações únicas.
 
----
+## 🚀 Características Principais
 
-## ✨ Principais Funcionalidades
+### 🤖 **Inteligência Artificial**
+- **Gemini AI Integration**: Respostas inteligentes e contextualizadas
+- **Sistema de Fallback**: Múltiplas chaves API para alta disponibilidade
+- **Personalidades Dinâmicas**: Diferentes personalidades por grupo
+- **Contexto Completo**: Entende conversas e respostas a mensagens
 
-- **Responde com personalidade definida (Amanda, sexy working, criada por Orion)**
-- **Onboarding automático para novos admins e grupos**
-- **Comando de feedback direto para o dono**
-- **Integração com Gemini AI** (contexto, histórico, system prompt detalhado)
-- **Comandos dinâmicos** (administração, utilidade, diversão, ranking, stickers)
-- **Arquitetura expansível** (plug-and-play, barrel exports, path aliases)
-- **Persistência de contexto e ranking** (MongoDB Atlas)
-- **Controle de menções e respostas em grupo (menções azuis)**
-- **Logs detalhados para depuração (apenas para dev, não aparecem para usuário)**
-- **Blacklist automática**
-- **Simulação de digitação e delay realista nas respostas da IA**
+### 🕵️ **Sistema de Visualizações Únicas (24h Automático)**
+- **Captura Automática**: Monitora todas as mensagens 24h por dia
+- **Detecção Inteligente**: Suporta múltiplos formatos de visualização única
+- **Nomenclatura Organizada**: `{grupo}_{numero}_{timestamp}.{extensão}`
+- **Localização**: `G:\Meu Drive\ia\vu\`
+- **Logs Detalhados**: Acompanhamento completo das capturas
 
----
+### 📱 **Funcionalidades Avançadas**
+- **Comandos Administrativos**: Gerenciamento completo de grupos
+- **Sistema de Jogos**: Jogos interativos em chat privado
+- **Extração de Perfis**: Comando `.bio` para capturar dados de usuários
+- **Captura de Mídia**: Sistema automático de backup de mídias
+- **Function Calling**: Comandos via linguagem natural
 
-## 🚀 Como rodar
+## 🛠️ Tecnologias Utilizadas
+
+- **TypeScript**: Linguagem principal
+- **Baileys**: Biblioteca WhatsApp Web
+- **Gemini AI**: Inteligência artificial do Google
+- **MongoDB Atlas**: Banco de dados em nuvem
+- **Inversify**: Injeção de dependências
+- **Node.js**: Runtime JavaScript
+
+## 📋 Pré-requisitos
+
+- Node.js v18+
+- MongoDB Atlas (conta gratuita)
+- Gemini AI API Key
+- WhatsApp Web conectado
+
+## ⚙️ Instalação
 
 1. **Clone o repositório**
-2. **Configure o `.env`** com as chaves do WhatsApp, Gemini e MongoDB
-3. **Instale as dependências**
-   ```bash
-   npm install
-   ```
-4. **Rode o bot**
-   ```bash
-   npm run build && npm start
-   ```
-5. **Escaneie o QR code no WhatsApp**
+```bash
+git clone <repository-url>
+cd euquefiz
+```
 
----
+2. **Instale as dependências**
+```bash
+npm install
+```
 
-## 🛠️ Estrutura de Comandos
+3. **Configure as variáveis de ambiente**
+```bash
+cp .env.example .env
+```
 
-### Utilitários e Diversão
+Edite o arquivo `.env`:
+```env
+MONGODB_URI=mongodb+srv://user:password@cluster.mongodb.net/database
+GEMINI_API_KEY_1=sua_chave_api_1
+GEMINI_API_KEY_2=sua_chave_api_2
+# ... adicione mais chaves conforme necessário
+```
 
-- `!menu` — Exibe o menu de comandos e informações do bot
-- `!ping` — Responde com Pong!
-- `!sticker` — Converte imagem em figurinha (responda a uma imagem)
-- `!coinflip` — Cara ou coroa
-- `!bafometro` — Mede seu nível de álcool 🍻
-- `!gaydometro` — Mede quanto por cento gay você é 🌈
-- `!cornometro` — Mede nível de corno 🫣
-- `!sexyometro` — Mede nível de sexy 😏
-- `!sorte` — Dá um conselho ou sorte do dia 🔮
-- `!crushometro @user` — Mede chance com crush 💘
-- `!nojoometro` — Mede nível de nojo 🤢
-- `!nerdometro` — Mede nível de nerd 🤓
-- `!velhaometro` — Mede idade mental 🧓
-- `!par` — Marca 2 pessoas aleatórias do grupo para formar um par 💘
-- `!menage` — Marca 3 pessoas aleatórias do grupo para um ménage 🔥
+4. **Execute o bot**
+```bash
+npm run dev
+```
+## 🎮 Comandos Disponíveis
 
-### Administração e Moderação
+### **Administrativos**
+- `!admins` - Lista todos os admins do grupo
+- `!banir @usuario` - Remove usuário e adiciona à blacklist
+- `!promover @usuario` - Promove usuário a admin
+- `!silenciar` - Restringe mensagens (só admins)
+- `!liberar` - Libera mensagens para todos
+- `!apagar` - Apaga mensagens do grupo
 
-- `!banir @user` — Bane e adiciona à blacklist
-- `!remover @user` — Remove membro do grupo
-- `!promover @user` — Promove a admin (com onboarding automático)
-- `!rebaixar @user` — Remove admin
-- `!silenciar` — Só admins podem falar
-- `!liberar` — Libera o grupo para todos
-- `!boasvindas` — Configura mensagens de boas-vindas e despedida
-- `!comandos` — Gerencia comandos ativos/inativos
-- `!apagar @user` — Apaga mensagens de um usuário
-- `!desbanir @user` — Remove da blacklist
-- `!admins` — Lista os admins do grupo
-- `!grupo` — Mostra informações do grupo
-- `!limpar` — Limpa mensagens do grupo
+### **Informativos**
+- `!topativos` - Mostra membros mais ativos
+- `!inativos` - Mostra membros inativos
+- `!novatos` - Mostra novos membros
+- `!status` - Status do bot
+- `!person` - Mostra personalidade ativa
 
-### Ranking e Atividade
+### **Diversão**
+- `!fofoca` - Gera fofoca aleatória
+- `!intriga` - Gera intriga provocativa
+- `!casal` - Marca casal aleatório
+- `!menage` - Marca 3 pessoas para ménage
+- `!suruba` - Marca 5 pessoas
+- `!bafometro` - Mede nível de álcool
+- `!cornometro` - Mede nível de corno
+- `!gaydometro` - Mede porcentagem gay
 
-- `!topativos [dias]` — Top usuários mais ativos
-- `!inativos [dias]` — Lista inativos
-- `!novatos [dias]` — Lista novatos
+### **Utilitários**
+- `!sticker` - Converte imagem em sticker
+- `!tempo cidade` - Mostra clima
+- `!ping` - Teste de conectividade
+- `!menu` - Menu de comandos
+- `.bio` - Extrai dados de perfil
 
-### Inteligência Artificial
+### **Sistema**
+- `!midia` - Estatísticas de mídia capturada
+- `!logs` - Análise de logs do sistema
+- `!cache` - Estatísticas do cache
+- `!performance` - Métricas de performance
 
-- Amanda responde com personalidade, contexto e histórico.
-- Só responde em grupo se for mencionada (@5521971200821) ou se for reply a uma mensagem dela.
-- Mensagens de boas-vindas e despedida são geradas via IA, marcando o usuário.
-- Delay e simulação de digitação para respostas mais humanas.
+## 🎭 Sistema de Personalidades
 
-### Feedback e Sugestões
+O bot possui diferentes personalidades que podem ser ativadas por grupo:
 
-- `!feedback <mensagem>` — Envia feedback, sugestão ou bug diretamente para o dono do bot (número: +55 21 96723-3931)
-- O feedback é enviado em privado para o desenvolvedor, com contexto do grupo e usuário.
-- Usuário recebe confirmação automática de envio.
+- **Padrão**: Personalidade geral e amigável
+- **Grupo**: Personalidade para grupos sociais
+- **Cartomante**: Personalidade mística e misteriosa
+- **Privado**: Personalidade para conversas individuais
 
----
+### **Comando de Personalidade**
+```bash
+!person [nome_da_personalidade]
+```
 
-## 🆕 Onboarding Inteligente para Admins
+## 📊 Sistema de Captura de Mídia
 
-- **Quando um novo admin é promovido:**
-  - Ele recebe uma mensagem privada com um guia rápido dos comandos de administração, dicas e contato do dono.
-- **Quando o bot entra em um novo grupo:**
-  - Todos os admins recebem onboarding automático no privado.
-- **O onboarding inclui:**
-  - Como usar `!boasvindas`, `!comandos`, `!ia`, `!person`, e outros comandos de administração.
-  - Dicas de uso, contato para suporte e exemplos.
+### **Mídias Normais**
+- **Localização**: `G:\Meu Drive\ia\`
+- **Formato**: `{grupo}_{numero}_{timestamp}.{extensão}`
+- **Tipos**: Imagens, vídeos, áudios, documentos, stickers
 
----
+### **Visualizações Únicas**
+- **Localização**: `G:\Meu Drive\ia\vu\`
+- **Formato**: `{grupo}_{numero}_{timestamp}.{extensão}`
+- **Captura**: Automática 24h por dia
 
-## 🛡️ Blacklist
+## 🔧 Configuração Avançada
 
-- Quem for banido com `!banir` é adicionado à blacklist e expulso automaticamente se tentar voltar.
+### **Estrutura de Diretórios**
+```
+src/
+├── commands/          # Comandos do bot
+├── services/          # Serviços principais
+├── core/             # Núcleo do sistema
+├── handlers/         # Handlers de eventos
+├── config/           # Configurações
+└── interfaces/       # Interfaces TypeScript
+```
 
----
+### **Serviços Principais**
+- `AIService`: Integração com Gemini AI
+- `ViewOnceWatcherService`: Sistema de visualizações únicas
+- `MediaCaptureService`: Captura de mídias normais
+- `BioExtractorService`: Extração de dados de perfil
+- `PersonalityService`: Gerenciamento de personalidades
 
-## 📦 Organização do Projeto
+## 📈 Monitoramento e Logs
 
-- **TypeScript, Node.js, Baileys, MongoDB Atlas**
-- **Arquitetura modular** (comandos em `src/commands/`)
-- **Singleton para serviços**
-- **Aliases e barrel exports**
-- **Foco em clareza, expansibilidade e personalização**
+### **Logs Disponíveis**
+- **Sistema**: Logs de inicialização e saúde
+- **Mensagens**: Processamento de mensagens
+- **IA**: Interações com Gemini AI
+- **Visualizações Únicas**: Capturas automáticas
+- **Mídia**: Capturas de mídias normais
 
----
+### **Comandos de Monitoramento**
+- `!logs` - Análise detalhada de logs
+- `!performance` - Métricas de performance
+- `!status` - Status geral do sistema
 
-## 👤 Personalidade da Amanda
+## 🚨 Troubleshooting
 
-Amanda é uma IA com personalidade sexy, provocadora, carioca, profissional do prazer, criada para entreter, moderar e vender. Ela segue um system prompt detalhado, com arquétipos, regras de comunicação, monetização e respostas sempre contextualizadas.
+### **Problemas Comuns**
 
----
+1. **Bot não conecta**
+   - Verifique a conexão com internet
+   - Confirme se o WhatsApp Web está ativo
+   - Verifique as variáveis de ambiente
 
-## 🧑‍💻 Robustez e Experiência do Usuário
+2. **Visualizações únicas não capturam**
+   - Verifique se a pasta `G:\Meu Drive\ia\vu\` existe
+   - Confirme se o sistema está ativo nos logs
+   - Teste enviando uma visualização única
 
-- **Bot não responde mensagens antigas** (enviadas enquanto estava offline)
-- **Menções funcionam corretamente e ficam azuis**
-- **Onboarding automático para admins e grupos**
-- **Feedback fácil e direto para o dono**
-- **Logs de debug não aparecem para o usuário**
-- **Código validado, robusto e sem erros de compilação**
+3. **IA não responde**
+   - Verifique as chaves da API Gemini
+   - Confirme se há créditos disponíveis
+   - Verifique os logs de erro
 
----
+### **Logs de Debug**
+```bash
+npm run dev
+```
+Os logs detalhados aparecem no console, incluindo:
+- Processamento de mensagens
+- Detecção de visualizações únicas
+- Interações com IA
+- Erros e warnings
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
 ## 📄 Licença
 
-MIT
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 📞 Suporte
+
+Para suporte e dúvidas:
+- Abra uma issue no GitHub
+- Verifique a documentação
+- Consulte os logs do sistema
 
 ---
 
-## 📚 Exemplos de Uso
-
-- Promova um usuário a admin e veja se ele recebe o onboarding no privado.
-- Adicione o bot a um novo grupo e confira se os admins recebem o guia.
-- Use `!feedback <mensagem>` em grupo ou privado e confira se o dono recebe.
-- Envie mensagens enquanto o bot está offline e veja se ele ignora ao voltar.
-- Teste menções para garantir que ficam azuis.
-- Compile com `npm run build` para garantir ausência de erros.
-
----
-
-Se quiser adicionar exemplos de uso, prints ou mais detalhes técnicos, só pedir! 
+**Desenvolvido com ❤️ para capturar todas as visualizações únicas do WhatsApp! 🕵️** 

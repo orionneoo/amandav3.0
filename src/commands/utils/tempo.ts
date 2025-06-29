@@ -1,8 +1,7 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
 import cache from '@/core/CacheManager';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const command: ICommand = {
   name: 'tempo',
@@ -11,7 +10,8 @@ const command: ICommand = {
   category: 'utils',
   usage: '!tempo [cidade]',
   cooldown: 10, // 10 segundos de cooldown
-  async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
     const userJid = message.key.participant || message.key.remoteJid!;
     const groupJid = message.key.remoteJid;
     

@@ -4,8 +4,7 @@ import { IInjectableCommand } from '@/interfaces/ICommand';
 import { PluginManager } from '@/services/PluginManager';
 import { WASocket } from '@whiskeysockets/baileys';
 import Logger from '@/utils/Logger';
-
-type WAMessage = any;
+import { MessageContext } from '@/handlers/message.handler';
 
 @injectable()
 export class PluginsCommand implements IInjectableCommand {
@@ -21,59 +20,66 @@ export class PluginsCommand implements IInjectableCommand {
     @inject(TYPES.PluginManager) private pluginManager: PluginManager
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
     try {
       const action = args[0]?.toLowerCase() || 'listar';
 
       switch (action) {
         case 'listar':
         case 'list':
-          await this.listPlugins(sock, message, args);
+          await this.listPlugins(context);
           break;
         
         case 'carregar':
         case 'load':
-          await this.loadPlugin(sock, message, args);
+          await this.loadPlugin(context);
           break;
         
         case 'descarregar':
         case 'unload':
-          await this.unloadPlugin(sock, message, args);
+          await this.unloadPlugin(context);
           break;
         
         case 'recarregar':
         case 'reload':
-          await this.reloadPlugin(sock, message, args);
+          await this.reloadPlugin(context);
           break;
         
         case 'estatisticas':
         case 'stats':
-          await this.showStats(sock, message, args);
+          await this.showStats(context);
           break;
         
         case 'exemplo':
         case 'example':
-          await this.createExample(sock, message, args);
+          await this.createExample(context);
           break;
         
         default:
-          await this.showHelp(sock, message);
+          await this.showHelp(context);
           break;
       }
 
     } catch (error) {
       Logger.error('Erro no comando plugins', { error, args });
-      await sock.sendMessage(message.key.remoteJid, {
-        text: '❌ Erro ao processar comando de plugins'
-      });
+      if (message.key.remoteJid) {
+        await sock.sendMessage(message.key.remoteJid, {
+          text: '❌ Erro ao processar comando de plugins'
+        });
+      }
     }
   }
 
-  private async listPlugins(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  private async listPlugins(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     const plugins = this.pluginManager.getAllPlugins();
     
     if (plugins.length === 0) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: '🔌 *PLUGINS DO SISTEMA*\n\nNenhum plugin carregado.\n\n💡 Use `!dono plugins exemplo` para criar um plugin de exemplo.'
       });
       return;
@@ -98,14 +104,18 @@ export class PluginsCommand implements IInjectableCommand {
 
     pluginsText += '💡 Use `!dono plugins recarregar <nome>` para recarregar um plugin';
 
-    await sock.sendMessage(message.key.remoteJid, { text: pluginsText });
+    await sock.sendMessage(remoteJid, { text: pluginsText });
   }
 
-  private async loadPlugin(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  private async loadPlugin(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     const pluginPath = args[1];
     
     if (!pluginPath) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: '❌ *ERRO*\n\nUso: `!dono plugins carregar <caminho>`\n\nExemplo: `!dono plugins carregar ./plugins/exemplo.js`'
       });
       return;
@@ -114,21 +124,25 @@ export class PluginsCommand implements IInjectableCommand {
     try {
       const plugin = await this.pluginManager.loadPlugin(pluginPath);
       
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `✅ *PLUGIN CARREGADO*\n\n*${plugin.name}* v${plugin.version}\n📝 ${plugin.description}\n👤 ${plugin.author}`
       });
     } catch (error) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `❌ *ERRO AO CARREGAR PLUGIN*\n\n${error instanceof Error ? error.message : String(error)}`
       });
     }
   }
 
-  private async unloadPlugin(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  private async unloadPlugin(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     const pluginName = args[1];
     
     if (!pluginName) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: '❌ *ERRO*\n\nUso: `!dono plugins descarregar <nome>`'
       });
       return;
@@ -137,21 +151,25 @@ export class PluginsCommand implements IInjectableCommand {
     try {
       await this.pluginManager.unloadPlugin(pluginName);
       
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `✅ *PLUGIN DESCARREGADO*\n\nPlugin *${pluginName}* foi descarregado com sucesso.`
       });
     } catch (error) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `❌ *ERRO AO DESCARREGAR PLUGIN*\n\n${error instanceof Error ? error.message : String(error)}`
       });
     }
   }
 
-  private async reloadPlugin(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  private async reloadPlugin(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     const pluginName = args[1];
     
     if (!pluginName) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: '❌ *ERRO*\n\nUso: `!dono plugins recarregar <nome>`'
       });
       return;
@@ -160,17 +178,21 @@ export class PluginsCommand implements IInjectableCommand {
     try {
       await this.pluginManager.reloadPlugin(pluginName);
       
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `✅ *PLUGIN RECARREGADO*\n\nPlugin *${pluginName}* foi recarregado com sucesso.`
       });
     } catch (error) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `❌ *ERRO AO RECARREGAR PLUGIN*\n\n${error instanceof Error ? error.message : String(error)}`
       });
     }
   }
 
-  private async showStats(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  private async showStats(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     const stats = this.pluginManager.getPluginStats();
     
     let statsText = '📊 *ESTATÍSTICAS DE PLUGINS*\n\n';
@@ -184,24 +206,32 @@ export class PluginsCommand implements IInjectableCommand {
       }
     }
 
-    await sock.sendMessage(message.key.remoteJid, { text: statsText });
+    await sock.sendMessage(remoteJid, { text: statsText });
   }
 
-  private async createExample(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  private async createExample(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     try {
       const examplePath = this.pluginManager.createExamplePlugin();
       
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `✅ *PLUGIN DE EXEMPLO CRIADO*\n\nPlugin de exemplo foi criado em:\n\`${examplePath}\`\n\n💡 Edite o arquivo e use \`!dono plugins carregar ${examplePath}\` para testá-lo.`
       });
     } catch (error) {
-      await sock.sendMessage(message.key.remoteJid, {
+      await sock.sendMessage(remoteJid, {
         text: `❌ *ERRO AO CRIAR EXEMPLO*\n\n${error instanceof Error ? error.message : String(error)}`
       });
     }
   }
 
-  private async showHelp(sock: WASocket, message: WAMessage): Promise<void> {
+  private async showHelp(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message } = context;
+    const remoteJid = message.key.remoteJid;
+    if (!remoteJid) return;
+
     const helpText = `🔌 *COMANDO DE PLUGINS*\n\n` +
                     `*Uso:* \`!dono plugins [ação]\`\n\n` +
                     `*Ações disponíveis:*\n` +
@@ -217,6 +247,6 @@ export class PluginsCommand implements IInjectableCommand {
                     `• \`!dono plugins recarregar exemplo\`\n` +
                     `• \`!dono plugins exemplo\` - Criar exemplo`;
 
-    await sock.sendMessage(message.key.remoteJid, { text: helpText });
+    await sock.sendMessage(remoteJid, { text: helpText });
   }
 } 

@@ -6,6 +6,7 @@ import { GroupActivity } from '@/database/models/GroupActivitySchema';
 import { TYPES } from '@/config/container';
 import { DatabaseService } from '@/services/DatabaseService';
 import { DatabaseStatus } from '@/utils/databaseStatus';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -23,7 +24,8 @@ export class UsuariosCommand implements IInjectableCommand {
     @inject(TYPES.OwnerService) private ownerService: OwnerService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args } = context;
     const userJid = message.key.participant || message.key.remoteJid!;
     const isPrivate = !message.key.remoteJid!.endsWith('@g.us');
     
@@ -247,28 +249,27 @@ export class UsuariosCommand implements IInjectableCommand {
         number: number,
         active: true 
       });
-
+      
       if (existingBan) {
         await sock.sendMessage(message.key.remoteJid!, {
-          text: `❌ *Usuário já banido*\n\n📱 Número: ${number}\n📝 Motivo: ${existingBan.reason}\n📅 Banido em: ${new Date(existingBan.bannedAt).toLocaleDateString('pt-BR')}`
+          text: `⚠️ *Usuário Já Banido*\n\nO número ${number} já está na blacklist.\nMotivo: ${existingBan.reason}`
         });
         return;
       }
-
-      // Criar novo ban
-      await Blacklist.create({
-        userJid: `${number}@s.whatsapp.net`,
+      
+      // Adicionar à blacklist
+      const newBan = new Blacklist({
         number: number,
-        name: `Usuário ${number}`,
-        bannedAt: new Date(),
-        bannedBy: message.key.participant || message.key.remoteJid!,
+        userJid: `${number}@s.whatsapp.net`,
         reason: motivo,
-        active: true
+        bannedBy: this.OWNER_NUMBER + '@s.whatsapp.net'
       });
+      await newBan.save();
 
       await sock.sendMessage(message.key.remoteJid!, {
-        text: `✅ *Usuário Banido com Sucesso*\n\n📱 Número: ${number}\n📝 Motivo: ${motivo}\n📅 Data: ${new Date().toLocaleDateString('pt-BR')}\n\n⚠️ O usuário será removido automaticamente de todos os grupos onde o bot estiver presente.`
+        text: `✅ *Usuário Banido*\n\nO número ${number} foi adicionado à blacklist.`
       });
+      
     } catch (error) {
       await sock.sendMessage(message.key.remoteJid!, {
         text: '❌ Erro ao banir usuário. Se o problema persistir, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
@@ -295,31 +296,30 @@ export class UsuariosCommand implements IInjectableCommand {
 
       const number = args[0].replace(/\D/g, '');
       
-      // NOVO: Implementar sistema de unban real
+      // NOVO: Implementar sistema de desbanir real
       const { Blacklist } = await import('@/database/models/BlacklistSchema');
       
-      // Buscar ban ativo
-      const ban = await Blacklist.findOne({ 
+      // Verificar se está banido
+      const banInfo = await Blacklist.findOne({ 
         number: number,
         active: true 
       });
 
-      if (!ban) {
+      if (!banInfo) {
         await sock.sendMessage(message.key.remoteJid!, {
-          text: `❌ *Usuário não está banido*\n\n📱 Número: ${number}\n\n💡 Este usuário não está na lista de banidos.`
+          text: `✅ *Usuário Não Banido*\n\nO número ${number} não está na blacklist.`
         });
         return;
       }
 
-      // Desativar o ban
-      await Blacklist.updateOne(
-        { _id: ban._id },
-        { active: false }
-      );
+      // Desativar ban
+      banInfo.active = false;
+      await banInfo.save();
 
       await sock.sendMessage(message.key.remoteJid!, {
-        text: `✅ *Usuário Desbanido com Sucesso*\n\n📱 Número: ${number}\n📝 Motivo anterior: ${ban.reason}\n📅 Banido em: ${new Date(ban.bannedAt).toLocaleDateString('pt-BR')}\n📅 Desbanido em: ${new Date().toLocaleDateString('pt-BR')}\n\n🔄 O usuário agora pode entrar nos grupos novamente.`
+        text: `✅ *Usuário Desbanido*\n\nO número ${number} foi removido da blacklist.`
       });
+      
     } catch (error) {
       await sock.sendMessage(message.key.remoteJid!, {
         text: '❌ Erro ao desbanir usuário. Se o problema persistir, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
@@ -337,123 +337,115 @@ export class UsuariosCommand implements IInjectableCommand {
         return;
       }
 
-      const period = args[0] || 'hoje';
-      const { startDate, endDate } = this.getDateRange(period);
-
-      // NOVO: Implementar contagem real de usuários
+      // NOVO: Implementar estatísticas reais
       let totalUsers = 0;
-      let newUsers = 0;
+      let activeLast7Days = 0;
+      let bannedUsers = 0;
+      let topGroups: any[] = [];
       
       try {
         const { UserSession } = await import('@/database/UserSessionSchema');
+        const { Blacklist } = await import('@/database/models/BlacklistSchema');
+        const { GroupActivity } = await import('@/database/models/GroupActivitySchema');
+        
         totalUsers = await UserSession.countDocuments();
         
-        // Usuários criados no período
-        newUsers = await UserSession.countDocuments({
-          lastInteraction: { $gte: startDate, $lte: endDate }
+        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        activeLast7Days = await UserSession.countDocuments({ 
+          lastInteraction: { $gte: sevenDaysAgo } 
         });
-      } catch (error) {
-        // Fallback: estimativa baseada em atividades
-        const uniqueUsers = await GroupActivity.distinct('userJid', {
-          timestamp: { $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) } // Últimos 30 dias
-        });
-        totalUsers = uniqueUsers.length;
         
-        const newUsersInPeriod = await GroupActivity.distinct('userJid', {
-          timestamp: { $gte: startDate, $lte: endDate }
-        });
-        newUsers = newUsersInPeriod.length;
+        bannedUsers = await Blacklist.countDocuments({ active: true });
+        
+        topGroups = await GroupActivity.aggregate([
+          { $group: { _id: '$groupJid', messages: { $sum: 1 } } },
+          { $sort: { messages: -1 } },
+          { $limit: 3 }
+        ]);
+        
+      } catch (error) {
+        // Fallback se schemas não existirem
       }
 
-      const activeUsers = await GroupActivity.distinct('userJid', {
-        timestamp: { $gte: startDate, $lte: endDate }
-      });
-
-      const topUsers = await GroupActivity.aggregate([
-        { $match: { timestamp: { $gte: startDate, $lte: endDate }, type: 'message' } },
-        { $group: { _id: '$userJid', count: { $sum: 1 } } },
-        { $sort: { count: -1 } },
-        { $limit: 10 }
-      ]);
-
-      // NOVO: Estatísticas de ban
-      const { Blacklist } = await import('@/database/models/BlacklistSchema');
-      const bannedUsers = await Blacklist.countDocuments({ active: true });
-
-      let statsMessage = `📊 *ESTATÍSTICAS DE USUÁRIOS - ${period.toUpperCase()}*\n\n`;
-      statsMessage += `👥 *Total de usuários:* ${totalUsers}\n`;
-      statsMessage += `🟢 *Usuários ativos:* ${activeUsers.length}\n`;
-      statsMessage += `🆕 *Novos usuários:* ${newUsers}\n`;
-      statsMessage += `🚫 *Usuários banidos:* ${bannedUsers}\n\n`;
-
-      if (topUsers.length > 0) {
-        statsMessage += `🏆 *Usuários mais ativos:*\n`;
-        for (let i = 0; i < Math.min(topUsers.length, 5); i++) {
-          const user = topUsers[i];
-          const number = user._id.split('@')[0];
-          statsMessage += `${i + 1}. ${number}: ${user.count} msgs\n`;
+      let statsText = `📊 *ESTATÍSTICAS DE USUÁRIOS*\n\n`;
+      statsText += `👥 Total de usuários: ${totalUsers}\n`;
+      statsText += `✅ Ativos (7 dias): ${activeLast7Days}\n`;
+      statsText += `🚫 Banidos: ${bannedUsers}\n\n`;
+      
+      statsText += `🏆 *TOP 3 GRUPOS MAIS ATIVOS:*\n`;
+      if (topGroups.length > 0) {
+        for (let i = 0; i < topGroups.length; i++) {
+          const group = topGroups[i];
+          const groupName = await this.getGroupName(group._id);
+          statsText += `${i + 1}. ${groupName} (${group.messages} msgs)\n`;
         }
+      } else {
+        statsText += 'Nenhum grupo ativo encontrado.';
       }
 
-      await sock.sendMessage(message.key.remoteJid!, { text: statsMessage });
+      await sock.sendMessage(message.key.remoteJid!, { text: statsText });
+      
     } catch (error) {
       await sock.sendMessage(message.key.remoteJid!, {
-        text: '❌ Erro ao obter estatísticas. Se o problema persistir, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
+        text: '❌ Erro ao gerar estatísticas de usuários. Se o problema persistir, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧'
       });
     }
   }
 
   private async showHelp(sock: WASocket, message: WAMessage): Promise<void> {
-    const helpMessage = `👥 *COMANDOS DE USUÁRIOS*\n\n` +
-      `📋 *Comandos disponíveis:*\n` +
-      `• \`!usuarios listar [quantidade]\` - Lista usuários\n` +
-      `• \`!usuarios buscar [numero]\` - Busca usuário específico\n` +
-      `• \`!usuarios banir [numero] [motivo]\` - Bane usuário\n` +
-      `• \`!usuarios desbanir [numero]\` - Desbane usuário\n` +
-      `• \`!usuarios estatisticas [periodo]\` - Estatísticas\n\n` +
-      `📅 *Períodos:* hoje, ontem, semana, mes\n\n` +
-      `💡 *Exemplos:*\n` +
-      `• \`!usuarios listar 50\`\n` +
-      `• \`!usuarios buscar 21999999999\`\n` +
-      `• \`!usuarios estatisticas semana\``;
+    const helpText = `👥 *COMANDO DE USUÁRIOS*\n\n` +
+                    `*Uso:* \`!usuarios [comando]\`\n\n` +
+                    `*Comandos disponíveis:*\n` +
+                    `📋 \`listar [limite]\` - Lista usuários (padrão: 20)\n` +
+                    `🔍 \`buscar [numero]\` - Busca um usuário\n` +
+                    `🚫 \`banir [numero] [motivo]\` - Bane um usuário\n` +
+                    `✅ \`desbanir [numero]\` - Desbane um usuário\n` +
+                    `📊 \`estatisticas\` - Mostra estatísticas\n` +
+                    `❓ \`ajuda\` - Mostra esta mensagem\n\n` +
+                    `*Exemplos:*\n` +
+                    `• \`!usuarios listar 50\`\n` +
+                    `• \`!usuarios buscar 5521... \`\n` +
+                    `• \`!usuarios banir 5521... spammer\``;
 
-    await sock.sendMessage(message.key.remoteJid!, { text: helpMessage });
+    await sock.sendMessage(message.key.remoteJid!, { text: helpText });
   }
 
   private async getGroupName(groupJid: string): Promise<string> {
     try {
       const { Group } = await import('@/database/models/GroupSchema');
-      const group = await Group.findOne({ groupJid });
-      return group?.name || 'Grupo Desconhecido';
-    } catch {
-      return 'Grupo Desconhecido';
+      const group = await Group.findOne({ groupJid }).lean();
+      return group?.name || groupJid;
+    } catch (error) {
+      return groupJid;
     }
   }
 
   private getDateRange(period: string): { startDate: Date; endDate: Date } {
     const endDate = new Date();
-    let startDate = new Date();
+    let startDate: Date;
 
-    switch (period.toLowerCase()) {
+    switch (period) {
       case 'hoje':
+        startDate = new Date();
         startDate.setHours(0, 0, 0, 0);
-        break;
-      case 'ontem':
-        startDate.setDate(startDate.getDate() - 1);
-        startDate.setHours(0, 0, 0, 0);
-        endDate.setDate(endDate.getDate() - 1);
-        endDate.setHours(23, 59, 59, 999);
         break;
       case 'semana':
+        startDate = new Date();
         startDate.setDate(startDate.getDate() - 7);
         break;
       case 'mes':
+        startDate = new Date();
         startDate.setMonth(startDate.getMonth() - 1);
         break;
-      default:
-        startDate.setHours(0, 0, 0, 0);
+      case 'ano':
+        startDate = new Date();
+        startDate.setFullYear(startDate.getFullYear() - 1);
+        break;
+      default: // Padrão para semana
+        startDate = new Date();
+        startDate.setDate(startDate.getDate() - 7);
+        break;
     }
-
     return { startDate, endDate };
   }
 }

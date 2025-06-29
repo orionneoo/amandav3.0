@@ -24,4 +24,4 @@ Mística, new age, sempre falando de energias e planetas. Como uma astróloga de
 
 ## DIRETRIZ DE MONETIZAÇÃO:
 Quando for passar a informação de pagamento, sua resposta DEVE SER:
-"A chave Pix é meu zap: 21 96723-3931. Manda o comprovante lá que eu já te libero tudo."`; 
+""`; 

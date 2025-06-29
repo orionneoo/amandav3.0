@@ -5,6 +5,7 @@ import { AIService } from '@/services/AIService';
 import { injectable, inject } from 'inversify';
 import { getUserDisplayName } from '@/utils/userUtils';
 import { TYPES } from '@/config/container';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -70,9 +71,13 @@ export class IntrigaCommand implements IInjectableCommand {
         @inject(TYPES.AIService) private aiService: AIService
     ) {}
 
-    public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+    public async handle(context: MessageContext): Promise<void> {
+        const { sock, messageInfo: message, from: groupJid, isGroup } = context;
         try {
-            const groupJid = message.key.remoteJid!;
+            if (!isGroup) {
+                await sock.sendMessage(groupJid, { text: 'Este comando só funciona em grupos.' });
+                return;
+            }
             
             // 1. Obter metadados do grupo
             const groupMetadata = await sock.groupMetadata(groupJid);
@@ -98,12 +103,12 @@ export class IntrigaCommand implements IInjectableCommand {
             };
             
             // 5. Gerar intriga com IA
-            const context = {
+            const aiContext = {
                 jid: groupJid,
                 text: prompt,
                 senderInfo
             };
-            const resposta = await this.aiService.getChatResponse(context);
+            const resposta = await this.aiService.getChatResponse(aiContext);
             const intriga = resposta ||
                 `🔥 BOMBA! INTRIGA SEXUAL EXCLUSIVA DA CENTRAL AMANDA! 🔥\n\nMermão, cês não tão ligados no caô que chegou aqui pra mim! [Intriga sexual gerada pela IA aqui]\n\nMe contaram, só repasso, tá, meus anjos? Não me metam nisso! 💋`;
             
@@ -128,7 +133,7 @@ export class IntrigaCommand implements IInjectableCommand {
         } catch (error) {
             console.error('Erro ao executar comando intriga:', error);
             
-            await sock.sendMessage(message.key.remoteJid!, {
+            await sock.sendMessage(groupJid, {
                 text: '❌ Ops! Deu ruim na hora de gerar a intriga. Tenta de novo mais tarde!'
             });
         }

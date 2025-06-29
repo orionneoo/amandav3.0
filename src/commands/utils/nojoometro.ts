@@ -1,15 +1,15 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
 import { getUserDisplayName } from '@/utils/userUtils';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const nojoometroCommand: ICommand = {
   name: 'nojoometro',
   description: 'Mede nível de nojo aleatório.',
   category: 'utils',
   usage: '!nojoometro',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const pct = Math.floor(Math.random() * 101);
     const jid = message.key.participant || message.key.remoteJid!;
     const groupJid = message.key.remoteJid!;

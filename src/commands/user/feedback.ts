@@ -1,6 +1,7 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { IInjectableCommand } from '@/interfaces/ICommand';
 import { injectable } from 'inversify';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -12,10 +13,8 @@ export class FeedbackCommand implements IInjectableCommand {
   public usage = '!feedback <sua mensagem>';
   public aliases = ['sugestao', 'bug', 'report', 'sugestão'];
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-    const userJid = message.key.participant || message.key.remoteJid!;
-    const groupJid = message.key.remoteJid!;
-    const isGroup = groupJid.endsWith('@g.us');
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: userJid, isGroup } = context;
     
     // Verificar se há mensagem
     if (args.length === 0) {

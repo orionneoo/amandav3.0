@@ -43,6 +43,12 @@ export class PersonalityService {
    */
   public async getActivePersonality(groupJid: string): Promise<string> {
     try {
+      // NOVO: Verificar se o MongoDB está conectado antes de tentar acessá-lo
+      if (!this.dbService.isMongoConnected()) {
+        console.log('[PersonalityService] MongoDB não está conectado, usando personalidade padrão');
+        return this.getPersonalityContent('padrao');
+      }
+
       // Buscar personalidade ativa no banco de dados
       const group = await Group.findOne({ groupJid });
       const activePersonality = group?.activePersonality || 'padrao';

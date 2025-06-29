@@ -3,6 +3,7 @@ import { IInjectableCommand } from '@/interfaces/ICommand';
 import { injectable, inject } from 'inversify';
 import { TYPES } from '@/config/container';
 import { commandDebug } from '@/utils/Logger';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -16,12 +17,11 @@ export class TodosCommand implements IInjectableCommand {
 
   constructor() {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: senderJid, isGroup } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      
       // Verificar se é um grupo
-      if (!groupJid.endsWith('@g.us')) {
+      if (!isGroup) {
         await sock.sendMessage(groupJid, {
           text: '❌ Este comando só pode ser usado em grupos!'
         });
@@ -39,7 +39,6 @@ export class TodosCommand implements IInjectableCommand {
       }
 
       // Verificar se quem enviou é admin
-      const senderJid = message.key.participant || message.key.remoteJid!;
       const senderParticipant = groupMetadata.participants.find(p => p.id === senderJid);
       
       if (!senderParticipant?.admin) {
@@ -86,7 +85,7 @@ export class TodosCommand implements IInjectableCommand {
 
     } catch (error) {
       commandDebug('Erro ao executar comando !todos:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ Erro ao marcar todos os membros. Tente novamente!'
       });
     }

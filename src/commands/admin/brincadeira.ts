@@ -9,6 +9,7 @@ import * as path from 'path';
 import { Group } from '@/database/models/GroupSchema';
 import { TYPES } from '@/config/container';
 import { ConfessionGame } from '../brincadeiras/confissao';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -71,17 +72,18 @@ export class BrincadeiraCommand implements ICommand {
   category: 'admin' = 'admin';
   usage = '!brincadeira ppp ativar - Ativa o jogo\n!brincadeira ppp enviar - Envia as fotos\n!brincadeira ppp status - Status do jogo\n!brincadeira confissao ativar - Ativa o jogo de Confissão\n!brincadeira confissao revelar - Revela as confissões\n!brincadeira confissao status - Status do jogo de Confissão\n!brincadeira confissao cancelar - Cancela o jogo de Confissão\n!brincadeira confissao encerrar - Finaliza o jogo de Confissão\n!brincadeira confissao ranking - Ver ranking dos mais chocantes\n!brincadeira confissao chocantes - Ver confissões chocantes\n!brincadeira confissao micos - Ver confissões engraçadas\n!brincadeira confissao resultado - Resultado completo do jogo de Confissão';
 
-  async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo, args } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      if (!groupJid.endsWith('@g.us')) {
-        await sock.sendMessage(groupJid, { 
+      const groupJid = messageInfo.key.remoteJid;
+      if (!groupJid || !groupJid.endsWith('@g.us')) {
+        await sock.sendMessage(groupJid || '', { 
           text: 'Eita, baby! 🫣 O jogo só funciona em grupos! 💋' 
         });
         return;
       }
 
-      const userJid = message.key.participant || '';
+      const userJid = messageInfo.key.participant || '';
       if (!await canUseCommand(sock, groupJid, userJid, 'admin')) {
         await sock.sendMessage(groupJid, { 
           text: 'Eita, amor! 🚫 Esse comando é só pra admins. Você não tem essa permissão ainda.' 
@@ -94,7 +96,7 @@ export class BrincadeiraCommand implements ICommand {
 
       // Se não especificou jogo ou ação, mostrar lista de brincadeiras
       if (!gameType) {
-        await this.showBrincadeirasList(sock, message, groupJid);
+        await this.showBrincadeirasList(sock, messageInfo, groupJid);
         return;
       }
 
@@ -110,57 +112,59 @@ export class BrincadeiraCommand implements ICommand {
 
       if (gameType === 'ppp') {
         if (action === 'ativar') {
-          await this.activateGame(sock, message, groupJid, userJid);
+          await this.activateGame(sock, messageInfo, groupJid, userJid);
         } else if (action === 'enviar') {
-          await this.sendSubmissions(sock, message, groupJid, userJid);
+          await this.sendSubmissions(sock, messageInfo, groupJid, userJid);
         } else if (action === 'status') {
-          await this.getGameStatus(sock, message, groupJid);
+          await this.getGameStatus(sock, messageInfo, groupJid);
         } else if (action === 'cancelar') {
-          await this.cancelGame(sock, message, groupJid, userJid);
+          await this.cancelGame(sock, messageInfo, groupJid, userJid);
         } else if (action === 'encerrar') {
-          await this.finalizeGame(sock, message, groupJid, userJid);
+          await this.finalizeGame(sock, messageInfo, groupJid, userJid);
         } else if (action === 'debug') {
-          await this.debugGame(sock, message, groupJid, userJid);
+          await this.debugGame(sock, messageInfo, groupJid, userJid);
         } else if (action === 'ranking') {
-          await this.getRanking(sock, message, groupJid);
+          await this.getRanking(sock, messageInfo, groupJid);
         } else if (action === 'casais') {
-          await this.getMatches(sock, message, groupJid);
+          await this.getMatches(sock, messageInfo, groupJid);
         } else if (action === 'resultado') {
-          await this.getResults(sock, message, groupJid, userJid);
+          await this.getResults(sock, messageInfo, groupJid, userJid);
         } else if (action === 'lista') {
-          await this.getDetailedList(sock, message, groupJid, userJid);
+          await this.getDetailedList(sock, messageInfo, groupJid, userJid);
         } else {
-          await this.showHelp(sock, message, groupJid);
+          await this.showHelp(sock, messageInfo, groupJid);
         }
       } else if (gameType === 'confissao') {
         if (action === 'ativar') {
-          await ConfessionGame.activate(sock, message, groupJid, userJid, this.gameService);
+          await ConfessionGame.activate(sock, messageInfo, groupJid, userJid, this.gameService);
         } else if (action === 'revelar') {
-          await ConfessionGame.reveal(sock, message, groupJid, userJid, this.gameService);
+          await ConfessionGame.reveal(sock, messageInfo, groupJid, userJid, this.gameService);
         } else if (action === 'status') {
-          await ConfessionGame.getStatus(sock, message, groupJid, this.gameService);
+          await ConfessionGame.getStatus(sock, messageInfo, groupJid, this.gameService);
         } else if (action === 'cancelar') {
-          await ConfessionGame.cancel(sock, message, groupJid, userJid, this.gameService);
+          await ConfessionGame.cancel(sock, messageInfo, groupJid, userJid, this.gameService);
         } else if (action === 'encerrar') {
-          await ConfessionGame.finalize(sock, message, groupJid, userJid, this.gameService);
+          await ConfessionGame.finalize(sock, messageInfo, groupJid, userJid, this.gameService);
         } else if (action === 'ranking') {
-          await ConfessionGame.ranking(sock, message, groupJid, this.gameService);
+          await ConfessionGame.ranking(sock, messageInfo, groupJid, this.gameService);
         } else if (action === 'chocantes') {
-          await ConfessionGame.chocantes(sock, message, groupJid, this.gameService);
+          await ConfessionGame.chocantes(sock, messageInfo, groupJid, this.gameService);
         } else if (action === 'micos') {
-          await ConfessionGame.micos(sock, message, groupJid, this.gameService);
+          await ConfessionGame.micos(sock, messageInfo, groupJid, this.gameService);
         } else if (action === 'resultado') {
-          await ConfessionGame.resultado(sock, message, groupJid, userJid, this.gameService);
+          await ConfessionGame.resultado(sock, messageInfo, groupJid, userJid, this.gameService);
         } else {
-          await ConfessionGame.showHelp(sock, message, groupJid);
+          await ConfessionGame.showHelp(sock, messageInfo, groupJid);
         }
       }
 
     } catch (error) {
       console.error('[ERROR] Erro no comando brincadeira:', error);
-      await sock.sendMessage(message.key.remoteJid!, { 
-        text: 'Eita, baby! 🫣 Deu um erro inesperado no jogo! Tenta de novo! Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧' 
-      });
+      if (messageInfo.key.remoteJid) {
+        await sock.sendMessage(messageInfo.key.remoteJid, { 
+          text: 'Eita, baby! 🫣 Deu um erro inesperado no jogo! Tenta de novo! Se não funcionar, chama o meu criador: +55 21 6723-3931 - ele vai resolver! 🔧' 
+        });
+      }
     }
   }
 
@@ -1918,5 +1922,5 @@ export function hasPendingConfessionChoice(userJid: string): boolean {
   return pendingConfessionChoices.has(userJid);
 }
 
-const brincadeiraCommand = new BrincadeiraCommand(new GameService());
-export default brincadeiraCommand; 
+// Remover a instanciação manual - será feita pelo container de injeção de dependência
+export default BrincadeiraCommand; 

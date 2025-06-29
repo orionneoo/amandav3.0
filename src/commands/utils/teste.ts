@@ -1,8 +1,6 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-import { createValidatedCommand } from '@/utils/commandWrapper';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 // FIX: Comando de teste para demonstrar mensagens de erro personalizadas
 const testeCommand: ICommand = {
@@ -11,7 +9,8 @@ const testeCommand: ICommand = {
   description: 'Comando de teste para demonstrar mensagens de erro personalizadas',
   category: 'utils',
   usage: '!teste [tipo_erro] [mensagem]',
-  execute: async (sock: WASocket, message: WAMessage, args: string[]) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message, args } = context;
     try {
       const groupJid = message.key.remoteJid!;
       
@@ -65,7 +64,4 @@ const testeCommand: ICommand = {
 };
 
 // FIX: Exportar comando com validação
-export default createValidatedCommand(testeCommand, {
-  maxArgs: 2,
-  optionalArgs: ['tipo_erro', 'mensagem']
-}); 
+export default testeCommand; 

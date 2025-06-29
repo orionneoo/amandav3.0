@@ -12,7 +12,6 @@ import { BioExtractorService } from '@/services/BioExtractorService';
 import { LocalHistoryService } from '@/services/LocalHistoryService';
 import { DailySummaryService } from '@/services/DailySummaryService';
 import { SchedulerService } from '@/services/SchedulerService';
-import { MessageManager } from '@/core/MessageManager';
 import { Bot } from '@/core/Bot';
 import { FofocaCommand } from '@/commands/ai/fofoca';
 import { IntrigaCommand } from '@/commands/ai/intriga';
@@ -50,6 +49,7 @@ import { HistoricoCommand } from '@/commands/admin/historico';
 import { TYPES } from '@/config/container';
 import { CommandHandler } from '@/core/CommandHandler';
 import { TodosCommand } from '@/commands/admin/todos';
+import { MidiaCommand } from '@/commands/admin/midia';
 
 // NOVO: Importar novos serviços
 import { AlertService } from '@/services/AlertService';
@@ -57,6 +57,8 @@ import { PerformanceMonitor } from '@/services/PerformanceMonitor';
 import { HookManager } from '@/services/HookManager';
 import { PluginManager } from '@/services/PluginManager';
 import { ViewOnceCaptureService } from '@/core/ViewOnceCaptureService';
+import { MediaCaptureService } from '@/services/MediaCaptureService';
+import { ViewOnceWatcherService } from '@/services/ViewOnceWatcherService';
 
 // NOVO: Importar novos comandos
 import { AlertasCommand } from '@/commands/owner/alertas';
@@ -80,7 +82,6 @@ container.bind<LocalHistoryService>(TYPES.LocalHistoryService).to(LocalHistorySe
 container.bind<DailySummaryService>(TYPES.DailySummaryService).to(DailySummaryService).inSingletonScope();
 container.bind<SchedulerService>(TYPES.SchedulerService).to(SchedulerService).inSingletonScope();
 container.bind<CommandHandler>(TYPES.CommandHandler).to(CommandHandler).inSingletonScope();
-container.bind<MessageManager>(TYPES.MessageManager).to(MessageManager).inSingletonScope();
 container.bind<Bot>(TYPES.Bot).to(Bot).inSingletonScope();
 container.bind<OwnerService>(TYPES.OwnerService).to(OwnerService).inSingletonScope();
 
@@ -90,6 +91,8 @@ container.bind<PerformanceMonitor>(TYPES.PerformanceMonitor).to(PerformanceMonit
 container.bind<HookManager>(TYPES.HookManager).to(HookManager).inSingletonScope();
 container.bind<PluginManager>(TYPES.PluginManager).to(PluginManager).inSingletonScope();
 container.bind<ViewOnceCaptureService>(TYPES.ViewOnceCaptureService).to(ViewOnceCaptureService).inSingletonScope();
+container.bind<MediaCaptureService>(TYPES.MediaCaptureService).to(MediaCaptureService).inSingletonScope();
+container.bind<ViewOnceWatcherService>(TYPES.ViewOnceWatcherService).to(ViewOnceWatcherService).inSingletonScope();
 
 // Registra comandos injetáveis (apenas classes com @injectable)
 container.bind<IInjectableCommand>(TYPES.IInjectableCommand).to(FofocaCommand);
@@ -114,5 +117,6 @@ container.bind<IInjectableCommand>(TYPES.IInjectableCommand).to(AlertasCommand);
 container.bind<IInjectableCommand>(TYPES.IInjectableCommand).to(PerformanceCommand);
 container.bind<IInjectableCommand>(TYPES.IInjectableCommand).to(PluginsCommand);
 container.bind<IInjectableCommand>(TYPES.IInjectableCommand).to(TodosCommand);
+container.bind<IInjectableCommand>(TYPES.IInjectableCommand).to(MidiaCommand);
 
 export { container }; 

@@ -3,7 +3,6 @@ import { Boom } from '@hapi/boom';
 import { DisconnectReason, useMultiFileAuthState, makeWASocket, proto, WASocket, ConnectionState, isJidBroadcast } from '@whiskeysockets/baileys';
 import { config } from '@/config';
 import { CommandHandler } from '@/core/CommandHandler';
-import { MessageManager } from '@/core/MessageManager';
 import { AIService } from '@/services/AIService';
 import { DatabaseService } from '@/services/DatabaseService';
 import { CommandCatalogService } from '@/services/CommandCatalogService';
@@ -23,6 +22,7 @@ import { PersonalityService } from '@/services/PersonalityService';
 import { TYPES } from '@/config/container';
 import { botDebug } from '@/utils/Logger';
 import { downloadContentFromMessage } from '@whiskeysockets/baileys';
+import { handleMessageUpsert } from '@/handlers/message.handler';
 
 // NOVO: Importar novos serviços
 import { AlertService } from '@/services/AlertService';
@@ -70,7 +70,6 @@ export class Bot {
     @inject(TYPES.GroupService) private groupService: GroupService,
     @inject(TYPES.SchedulerService) private schedulerService: SchedulerService,
     @inject(TYPES.PersonalityService) private personalityService: PersonalityService,
-    @inject(TYPES.MessageManager) private messageManager: MessageManager,
     @inject(TYPES.CommandHandler) private commandHandler: CommandHandler,
     // NOVO: Injetar novos serviços
     @inject(TYPES.AlertService) private alertService: AlertService,
@@ -246,11 +245,10 @@ export class Bot {
       );
       
       // NOVO: Atualizar catálogo de comandos e ferramentas
-      const injectableCommands = this.commandHandler.getInjectableCommands();
-      this.commandCatalogService.updateCatalog(injectableCommands);
-      this.functionToolsService.updateFunctionTools(injectableCommands);
+      this.commandCatalogService.updateCatalog(Array.from(this.commandHandler.getCommands().values()));
+      this.functionToolsService.updateFunctionTools(Array.from(this.commandHandler.getCommands().values()));
       
-      console.log(`[INFO] Sistema inicializado com ${injectableCommands.length} comandos injetáveis`);
+      console.log(`[INFO] Sistema inicializado com ${this.commandHandler.getCommands().size} comandos injetáveis`);
       
       // NOVO: Iniciar agendadores
       this.schedulerService.start();
@@ -366,9 +364,6 @@ export class Bot {
           this.botOnlineTime = Date.now();
           botDebug('Bot online em:', new Date(this.botOnlineTime).toISOString());
           
-          // FIX: Marcar o bot como online para o filtro de mensagens
-          this.messageManager.setBotOnline();
-          
           console.log('[INFO] Sistema de Function Calling/NLP ativo!');
           console.log('[INFO] Comandos disponíveis via linguagem natural:');
           const tools = this.functionToolsService.getFunctionTools();
@@ -380,42 +375,16 @@ export class Bot {
 
       this.sock.ev.on('creds.update', saveCreds);
 
-      this.sock.ev.on('messages.upsert', async (m: { messages: WAMessage[]; type: string; }) => {
-        for (const msg of m.messages) {
-          // NOVO: Capturar TODAS as mensagens de visualização única (independente de serem processadas ou não)
-          try {
-            await this.viewOnceCaptureService.captureViewOnceMessage(this.sock, msg);
-          } catch (error) {
-            // Apenas log de erro crítico
-            console.error('[VIEW_ONCE] Erro na captura automática:', error);
-          }
-          
-          // NOVO: Intercepta e salva mídia de visualização única (sistema antigo mantido para compatibilidade)
-          try {
-            if (msg.message?.viewOnceMessageV2 || msg.message?.viewOnceMessage) {
-              await this.handleViewOnceMessageSafe(msg);
-            }
-          } catch (_) { /* nunca responde erro */ }
-          
-          if (!msg.key.fromMe && m.type === 'notify') {
-            try {
-              await this.messageManager.handleMessage(this.sock, msg);
-            } catch (error) {
-              console.error('[ERROR] Erro ao processar mensagem:', error);
-              await ErrorLogger.logError(error as Error, { 
-                action: 'handle_message',
-                messageId: msg.key.id || undefined,
-                jid: msg.key.remoteJid || undefined
-              });
-            }
-          }
-        }
+      // Ouça por novas mensagens
+      this.sock.ev.on('messages.upsert', async (upsert) => {
+        // ROTEADOR CENTRAL: Passa o evento para o nosso roteador centralizado
+        await handleMessageUpsert(this.sock, upsert);
       });
 
-      // NOVO: Listener para detectar entrada/saída de membros
-      this.sock.ev.on('group-participants.update', async (update) => {
+      // NOVO: Processamento de eventos de grupo
+      this.sock.ev.on('group-participants.update', async (event) => {
         try {
-          const { action, participants, id: groupJid } = update;
+          const { action, participants, id: groupJid } = event;
           
           // FIX: Ignorar eventos que aconteceram antes do bot ficar online
           if (this.botOnlineTime) {
@@ -614,7 +583,7 @@ export class Bot {
                 
                 // NOVO: Verificar se o OnboardingService já enviou mensagem
                 if (this.onboardingService.hasPromotionBeenSent(userJid, groupJid)) {
-                  botDebug(`Mensagem de promoção já enviada pelo OnboardingService para ${userJid} no grupo ${groupJid}. Ignorando.`);
+                  botDebug(`Promoção já enviada para ${userJid} no grupo ${groupJid}`);
                   continue;
                 }
                 

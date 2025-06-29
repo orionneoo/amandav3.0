@@ -8,9 +8,7 @@ import { PersonalityService } from '@/services/PersonalityService';
 import { TYPES } from '@/config/container';
 import { getUserDisplayName } from '@/utils/userUtils';
 import { DatabaseStatus } from '@/utils/databaseStatus';
-import { commandMiddleware } from '@/utils/commandMiddleware';
-
-type WAMessage = any;
+import { MessageContext } from '@/handlers/message.handler';
 
 @injectable()
 export class ResumoCommand implements IInjectableCommand {
@@ -29,14 +27,12 @@ export class ResumoCommand implements IInjectableCommand {
     @inject(TYPES.PersonalityService) private personalityService: PersonalityService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid } = context;
     try {
-      const groupJid = message.key.remoteJid!;
-      const senderJid = message.key.participant!;
-
       // Verificar se é grupo
       if (!groupJid.endsWith('@g.us')) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(groupJid, {
           text: '❌ Este comando só funciona em grupos!'
         });
         return;
@@ -90,13 +86,13 @@ export class ResumoCommand implements IInjectableCommand {
       const groupName = group?.name || 'Grupo';
 
       // Formatar resumo
-      const resumoText = await this.formatSummary(summary, groupName, targetDate, sock);
+      const resumoText = await this.formatSummary(summary, groupName, targetDate, sock, groupJid);
 
       await sock.sendMessage(groupJid, { text: resumoText });
 
     } catch (error) {
       console.error('[ERROR] Erro no comando resumo:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(groupJid, {
         text: '❌ Erro ao gerar resumo. Tente novamente em alguns segundos.'
       });
     }
@@ -106,7 +102,8 @@ export class ResumoCommand implements IInjectableCommand {
     summary: any, 
     groupName: string, 
     date: string, 
-    sock: WASocket
+    sock: WASocket,
+    groupJid: string
   ): Promise<string> {
     const formattedDate = new Date(date).toLocaleDateString('pt-BR', {
       weekday: 'long',
@@ -131,7 +128,7 @@ export class ResumoCommand implements IInjectableCommand {
       resumoText += `🏆 *TOP 5 MAIS ATIVOS*\n`;
       for (let i = 0; i < Math.min(summary.topUsers.length, 5); i++) {
         const user = summary.topUsers[i];
-        const displayName = await this.getUserDisplayName(sock, user.jid, summary.groupJid, user.name);
+        const displayName = await getUserDisplayName(sock, user.jid, groupJid, user.name);
         resumoText += `${i + 1}. ${displayName} - ${user.messageCount} mensagens\n`;
       }
       resumoText += '\n';
@@ -174,18 +171,5 @@ export class ResumoCommand implements IInjectableCommand {
     }
 
     return resumoText;
-  }
-
-  private async getUserDisplayName(
-    sock: WASocket, 
-    userJid: string, 
-    groupJid: string, 
-    fallbackName: string
-  ): Promise<string> {
-    try {
-      return await getUserDisplayName(sock, userJid, groupJid, fallbackName);
-    } catch (error) {
-      return fallbackName;
-    }
   }
 } 

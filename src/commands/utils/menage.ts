@@ -1,14 +1,14 @@
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { ICommand } from '@/interfaces/ICommand';
-
-type WAMessage = proto.IWebMessageInfo;
+import { MessageContext } from '@/handlers/message.handler';
 
 const menageCommand: ICommand = {
   name: 'menage',
   description: 'Marca 3 pessoas aleatórias do grupo para um ménage.',
   category: 'utils',
   usage: '!menage',
-  execute: async (sock: WASocket, message: WAMessage) => {
+  handle: async (context: MessageContext) => {
+    const { sock, messageInfo: message } = context;
     const groupJid = message.key.remoteJid!;
     if (!groupJid.endsWith('@g.us')) {
       await sock.sendMessage(groupJid, { text: 'Esse comando só funciona em grupos!' });

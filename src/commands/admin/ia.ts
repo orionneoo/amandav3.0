@@ -3,6 +3,7 @@ import { IInjectableCommand } from '@/interfaces/ICommand';
 import { canUseCommand } from '@/utils/permissions';
 import { Group } from '@/database/models/GroupSchema';
 import { injectable } from 'inversify';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -14,11 +15,10 @@ export class IaCommand implements IInjectableCommand {
   public usage = '!ia [on/off/status]';
   public aliases = ['ai', 'bot', 'amanda'];
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-    const groupJid = message.key.remoteJid!;
-    const userJid = message.key.participant || '';
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo: message, args, from: groupJid, sender: userJid, isGroup } = context;
     
-    if (!groupJid.endsWith('@g.us')) {
+    if (!isGroup) {
       await sock.sendMessage(groupJid, { text: 'Este comando só pode ser usado em grupos.' });
       return;
     }

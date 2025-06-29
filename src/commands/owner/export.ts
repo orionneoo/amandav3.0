@@ -6,6 +6,7 @@ import { TYPES } from '@/config/container';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { DatabaseStatus } from '@/utils/databaseStatus';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = any;
 
@@ -23,13 +24,19 @@ export class ExportCommand implements IInjectableCommand {
     @inject(TYPES.DatabaseService) private databaseService: DatabaseService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo, args } = context;
     try {
-      const senderJid = message.key.participant || message.key.remoteJid!;
+      const senderJid = messageInfo.key.participant || messageInfo.key.remoteJid;
+      const remoteJid = messageInfo.key.remoteJid;
+
+      if (!remoteJid) {
+        return;
+      }
       
       // Verificar se é o dono
-      if (!this.isOwner(senderJid)) {
-        await sock.sendMessage(message.key.remoteJid!, {
+      if (!this.isOwner(senderJid || '')) {
+        await sock.sendMessage(remoteJid, {
           text: '❌ Este comando é exclusivo do dono do bot!'
         });
         return;
@@ -37,7 +44,7 @@ export class ExportCommand implements IInjectableCommand {
 
       // Verificar se o banco está offline
       if (DatabaseStatus.getInstance().isDatabaseOffline()) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: DatabaseStatus.getInstance().getOfflineMessage('Export')
         });
         return;
@@ -47,11 +54,11 @@ export class ExportCommand implements IInjectableCommand {
       const exportOptions = this.parseArgs(args);
 
       if (exportOptions.help) {
-        await this.showHelp(sock, message);
+        await this.showHelp(sock, messageInfo);
         return;
       }
 
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(remoteJid, {
         text: '📤 Preparando exportação...'
       });
 
@@ -80,9 +87,9 @@ export class ExportCommand implements IInjectableCommand {
           `4. Use para backup ou análise externa\n\n` +
           `🔒 Os dados contêm informações sensíveis!`;
 
-        await sock.sendMessage(message.key.remoteJid!, { text: resultMessage });
+        await sock.sendMessage(remoteJid, { text: resultMessage });
       } else {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: `❌ *ERRO NA EXPORTAÇÃO*\n\n` +
                 `❌ Erro: ${result.error}\n\n` +
                 `💡 Verifique:\n` +
@@ -94,9 +101,11 @@ export class ExportCommand implements IInjectableCommand {
 
     } catch (error) {
       console.error('[ERROR] Erro no comando export:', error);
-      await sock.sendMessage(message.key.remoteJid!, {
-        text: '❌ Erro ao exportar dados. Verifique os logs do servidor.'
-      });
+      if (messageInfo.key.remoteJid) {
+        await sock.sendMessage(messageInfo.key.remoteJid, {
+          text: '❌ Erro ao exportar dados. Verifique os logs do servidor.'
+        });
+      }
     }
   }
 

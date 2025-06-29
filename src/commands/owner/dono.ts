@@ -5,6 +5,7 @@ import { OwnerService } from '@/services/OwnerService';
 import { TYPES } from '@/config/container';
 import Logger from '@/utils/Logger';
 import { commandDebug } from '@/utils/Logger';
+import { MessageContext } from '@/handlers/message.handler';
 
 type WAMessage = proto.IWebMessageInfo;
 
@@ -29,15 +30,23 @@ export class DonoCommand implements IInjectableCommand {
     @inject(TYPES.OwnerService) private ownerService: OwnerService
   ) {}
 
-  public async execute(sock: WASocket, message: WAMessage, args: string[]): Promise<void> {
-    const userJid = message.key.participant || message.key.remoteJid!;
-    const isPrivate = !message.key.remoteJid!.endsWith('@g.us');
+  public async handle(context: MessageContext): Promise<void> {
+    const { sock, messageInfo, args } = context;
+    const userJid = messageInfo.key.participant || messageInfo.key.remoteJid;
+    const remoteJid = messageInfo.key.remoteJid;
+
+    if (!remoteJid || !userJid) {
+      // Cannot respond if there's no remoteJid
+      return;
+    }
+    
+    const isPrivate = !remoteJid.endsWith('@g.us');
     
     // Verificar se é o dono - extrair apenas a parte numérica do ID
     const userNumber = userJid.split('@')[0];
     
     if (!this.AUTHORIZED_OWNER_IDS.includes(userNumber)) {
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(remoteJid, {
         text: `🚫 *Acesso Negado*\n\nEste comando é exclusivo do dono do bot!\n\n📱 ID detectado: ${userJid}\n📱 Número extraído: ${userNumber}\n📱 IDs autorizados: ${this.AUTHORIZED_OWNER_IDS.join(', ')}`
       });
       return;
@@ -47,7 +56,7 @@ export class DonoCommand implements IInjectableCommand {
 
     // Verificar se é conversa privada
     if (!isPrivate) {
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(remoteJid, {
         text: '🔒 *Comando Privado*\n\nEste comando só pode ser usado em conversa privada com o bot!'
       });
       return;
@@ -58,14 +67,14 @@ export class DonoCommand implements IInjectableCommand {
     
     if (!isAuthenticated) {
       if (args.length === 0 || args[0] !== 'senha') {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: `🔐 *Autenticação Necessária*\n\nPara usar os comandos do dono, você precisa se autenticar primeiro.\n\n💡 Use: \`!dono senha [sua_senha]\``
         });
         return;
       }
 
       if (args.length < 2) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: '❌ *Senha Obrigatória*\n\nUse: `!dono senha [sua_senha]`'
         });
         return;
@@ -73,7 +82,7 @@ export class DonoCommand implements IInjectableCommand {
 
       const password = args[1];
       if (password !== this.OWNER_PASSWORD) {
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: '❌ *Senha Incorreta*\n\nTente novamente ou entre em contato com o desenvolvedor.'
         });
         return;
@@ -82,7 +91,7 @@ export class DonoCommand implements IInjectableCommand {
       // Autenticar o dono
       await this.ownerService.authenticate(userJid);
       
-      await sock.sendMessage(message.key.remoteJid!, {
+      await sock.sendMessage(remoteJid, {
         text: `✅ *Autenticação Bem-sucedida!*\n\n🎉 Agora você tem acesso total aos comandos do dono!\n\n📋 Use \`!dono ajuda\` para ver todos os comandos disponíveis.`
       });
       return;
@@ -93,69 +102,69 @@ export class DonoCommand implements IInjectableCommand {
 
     switch (command) {
       case 'status':
-        await this.showStatus(sock, message);
+        await this.showStatus(sock, messageInfo);
         break;
       case 'broadcast':
-        await this.broadcastMessage(sock, message, args.slice(1));
+        await this.broadcastMessage(sock, messageInfo, args.slice(1));
         break;
       case 'foto':
-        await this.broadcastPhoto(sock, message, args.slice(1));
+        await this.broadcastPhoto(sock, messageInfo, args.slice(1));
         break;
       case 'fotocomlegenda':
-        await this.broadcastPhotoWithCaption(sock, message, args.slice(1));
+        await this.broadcastPhotoWithCaption(sock, messageInfo, args.slice(1));
         break;
       case 'alterarfoto':
-        await this.changeBotPhoto(sock, message);
+        await this.changeBotPhoto(sock, messageInfo);
         break;
       case 'estatisticas':
-        await this.showStatistics(sock, message, args.slice(1));
+        await this.showStatistics(sock, messageInfo, args.slice(1));
         break;
       case 'erros':
-        await this.showErrors(sock, message, args.slice(1));
+        await this.showErrors(sock, messageInfo, args.slice(1));
         break;
       case 'grupos':
-        await this.showGroups(sock, message);
+        await this.showGroups(sock, messageInfo);
         break;
       case 'comandos':
-        await this.showCommandStats(sock, message, args.slice(1));
+        await this.showCommandStats(sock, messageInfo, args.slice(1));
         break;
       case 'gemini':
-        await this.showGeminiStats(sock, message, args.slice(1));
+        await this.showGeminiStats(sock, messageInfo, args.slice(1));
         break;
       case 'limpar':
       case 'clear':
-        await this.clearData(sock, message, args);
+        await this.clearData(sock, messageInfo, args);
         break;
       case 'limparia':
-        await this.clearAIFailureCache(sock, message);
+        await this.clearAIFailureCache(sock, messageInfo);
         break;
       case 'reiniciar':
-        await this.restartBot(sock, message);
+        await this.restartBot(sock, messageInfo);
         break;
       case 'logout':
-        await this.logout(sock, message);
+        await this.logout(sock, messageInfo);
         break;
       case 'ajuda':
       case 'help':
-        await this.showHelp(sock, message);
+        await this.showHelp(sock, messageInfo);
         break;
       case 'chavesgemini':
-        await this.showGeminiStats(sock, message, args.slice(1));
+        await this.showGeminiStats(sock, messageInfo, args.slice(1));
         break;
       case 'statusbanco':
-        await sock.sendMessage(message.key.remoteJid!, {
+        await sock.sendMessage(remoteJid, {
           text: '📊 *STATUS DO BANCO*\n\nFuncionalidade em desenvolvimento.\n\nUse \`!dono status\` para ver o status geral do bot.'
         });
         break;
       case 'promocoes':
       case 'promotions':
-        await this.managePromotions(sock, message, args);
+        await this.managePromotions(sock, messageInfo, args);
         break;
       case 'debug':
-        await this.manageDebug(sock, message, args);
+        await this.manageDebug(sock, messageInfo, args);
         break;
       default:
-        await this.showHelp(sock, message);
+        await this.showHelp(sock, messageInfo);
         break;
     }
   }

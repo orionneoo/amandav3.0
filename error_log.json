@@ -1529,5 +1529,86 @@
       "userId": "5521981098659@s.whatsapp.net",
       "action": "get_group_metadata"
     }
+  },
+  {
+    "timestamp": "2025-06-29T16:57:01.871Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "userJid": "5521967233931@s.whatsapp.net",
+      "action": "find_active_confession_games_for_user"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T16:57:02.561Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "userJid": "109311313363133@lid",
+      "action": "find_active_confession_games_for_user"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:36:25.278Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "userJid": "5521967233931@s.whatsapp.net",
+      "action": "find_active_confession_games_for_user"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:36:26.853Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "userJid": "109311313363133@lid",
+      "action": "find_active_confession_games_for_user"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:48:29.070Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "userJid": "5521967233931@s.whatsapp.net",
+      "action": "find_active_confession_games_for_user"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:48:29.661Z",
+    "error": "Operation `groups.find()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.find()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "userJid": "109311313363133@lid",
+      "action": "find_active_confession_games_for_user"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:57:36.564Z",
+    "error": "Operation `groups.findOneAndUpdate()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groups.findOneAndUpdate()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "groupJid": "120363388206049308@g.us",
+      "action": "update_group_info"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:57:56.946Z",
+    "error": "Operation `blacklists.findOne()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `blacklists.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "jid": "120363388206049308@g.us",
+      "action": "process_blacklist_check"
+    }
+  },
+  {
+    "timestamp": "2025-06-29T17:58:06.974Z",
+    "error": "Operation `groupactivities.insertOne()` buffering timed out after 10000ms",
+    "stack": "MongooseError: Operation `groupactivities.insertOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (C:\\Users\\Well\\Desktop\\euquefiz\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)",
+    "context": {
+      "jid": "120363388206049308@g.us",
+      "action": "save_join_activity"
+    }
   }
 ]
