@@ -169,9 +169,12 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
   const isMentioningBot = mentionedJids.map(jid => jidNormalizedUser(jid)).includes(jidNormalizedUser(botJid));
 
   // 3. Detecção textual (melhorada para incluir legendas de mídia)
-  const regexMention = new RegExp(`@?${botJid.split('@')[0]}\\b`, 'i');
+  const botJidFull = botJid || '';
+  const botNumber = botJidFull.split('@')[0];
+
   const textMentionPatterns = [
-    `@${botJid.split('@')[0]}`,
+    `@${botNumber}`,
+    botNumber,
     '@amanda',
     '@Amanda',
     '@AMANDA',
@@ -190,10 +193,17 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
   const fullTextToCheck = text + ' ' + (messageContent.imageMessage?.caption || '') + ' ' + (messageContent.videoMessage?.caption || '');
   const isTextMentioningBot = textMentionPatterns.some(pattern => 
     fullTextToCheck.toLowerCase().includes(pattern.toLowerCase())
-  ) || regexMention.test(fullTextToCheck);
+  ) || new RegExp(`@?${botNumber}\\b`, 'i').test(fullTextToCheck);
 
   // Combina as formas de menção
   const isMentioningBotFinal = isReplyToBot || isMentioningBot || isTextMentioningBot;
+
+  // NOVO: Declarar mediaType antes dos logs
+  const mediaType = messageContent.imageMessage ? 'image' : 
+                   (messageContent.videoMessage ? 'video' : 
+                   (messageContent.audioMessage ? 'audio' : 
+                   (messageContent.documentMessage ? 'document' : 
+                   (messageContent.stickerMessage ? 'sticker' : undefined))));
 
   // DEBUG: Log para verificar se está detectando corretamente
   if (isReplyToBot || isMentioningBotFinal) {
@@ -233,11 +243,6 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
   const command = isCommand ? text.split(' ')[0].substring(1).toLowerCase() : undefined;
   const args = isCommand ? text.split(' ').slice(1) : [];
 
-  const mediaType = messageContent.imageMessage ? 'image' : 
-                   (messageContent.videoMessage ? 'video' : 
-                   (messageContent.audioMessage ? 'audio' : 
-                   (messageContent.documentMessage ? 'document' : 
-                   (messageContent.stickerMessage ? 'sticker' : undefined))));
   const isViewOnce = !!messageContent.viewOnceMessageV2;
 
   // NOVO: Log detalhado de mídia
