@@ -286,6 +286,16 @@ async function handleBioMessage(context: MessageContext) {
   try {
     console.log(`[BIO] Processando mensagem .bio de ${context.sender} no ${context.isGroup ? 'grupo' : 'privado'}`);
     
+    // Verificar se é o Milton (ignorar)
+    const senderName = context.messageInfo.pushName || '';
+    const miltonVariations = ['milton', 'Milton', 'MILTON', 'milto', 'Milto', 'MILTO'];
+    const isMilton = miltonVariations.some(variation => senderName.toLowerCase().includes(variation.toLowerCase()));
+    
+    if (isMilton) {
+      console.log(`[BIO] Ignorando mensagem do Milton: ${senderName}`);
+      return; // Silenciosamente ignora
+    }
+    
     // Obter instância do BioExtractorService
     const bioExtractorService = container.get<BioExtractorService>(TYPES.BioExtractorService);
     
@@ -303,38 +313,65 @@ async function handleBioMessage(context: MessageContext) {
       if (saved) {
         console.log(`[BIO] ✅ Perfil salvo com sucesso para ${context.sender}`);
         
-        // Responder confirmando o salvamento
-        const response = `✅ Perfil atualizado com sucesso!\n\n${bioExtractorService.formatProfileForAI(extractedData as any)}`;
+        // Capturar foto se houver mídia
+        let photoInfo = '';
+        if (context.hasMedia && context.mediaType === 'image') {
+          try {
+            console.log(`[BIO] 📸 Capturando foto do perfil...`);
+            const mediaCaptureService = container.get<MediaCaptureService>(TYPES.MediaCaptureService);
+            await mediaCaptureService.captureMedia(context.sock, context.messageInfo);
+            photoInfo = '\n📸 *Foto do perfil capturada com sucesso!*';
+          } catch (error) {
+            console.error('[BIO] Erro ao capturar foto:', error);
+          }
+        }
         
-        await context.sock.sendMessage(
-          context.from,
-          { text: response },
-          { quoted: context.messageInfo }
-        );
+        // Preparar dados para IA
+        const profileData = bioExtractorService.formatProfileForAI(extractedData as any);
+        const senderDisplayName = context.messageInfo.pushName || context.sender.split('@')[0];
+        
+        // Criar prompt para IA com boas-vindas personalizadas
+        const aiPrompt = `🤖 *NOVA PESSOA DETECTADA!*\n\n👤 *Nome:* ${senderDisplayName}\n📝 *Perfil:* ${profileData}\n\n💬 *Mensagem para IA:*\n\nOlá Amanda! Uma pessoa nova acabou de usar o comando .bio no grupo. Aqui estão as informações dela:\n\n${profileData}\n\n${photoInfo ? 'Ela também enviou uma foto do perfil!' : ''}\n\nPor favor, dê boas-vindas personalizadas para ela, seja simpática e sexy como sempre. Use as informações do perfil para personalizar sua mensagem. Seja criativa e divertida!`;
+        
+        // Enviar para IA processar
+        try {
+          const aiResponse = await AIService.processInteraction({
+            ...context,
+            text: aiPrompt
+          });
+          
+          // Enviar resposta da IA
+          await context.sock.sendMessage(
+            context.from,
+            { text: aiResponse },
+            { quoted: context.messageInfo }
+          );
+          
+        } catch (aiError) {
+          console.error('[BIO] Erro ao processar com IA:', aiError);
+          
+          // Fallback: mensagem padrão
+          const fallbackMessage = `💋 *Bem-vinda(o), ${senderDisplayName}!* 💋\n\n${profileData}\n\n${photoInfo}\n\n😏 Agora você está no meu radar, cria! Se precisar de algo, é só chamar! 🔥`;
+          
+          await context.sock.sendMessage(
+            context.from,
+            { text: fallbackMessage },
+            { quoted: context.messageInfo }
+          );
+        }
+        
       } else {
         console.error(`[BIO] ❌ Erro ao salvar perfil para ${context.sender}`);
-        await context.sock.sendMessage(
-          context.from,
-          { text: '❌ Erro ao salvar perfil. Tente novamente.' },
-          { quoted: context.messageInfo }
-        );
+        // Não enviar mensagem de erro (conforme solicitado)
       }
     } else {
       console.log(`[BIO] Nenhum dado válido extraído da mensagem de ${context.sender}`);
-      await context.sock.sendMessage(
-        context.from,
-        { text: '❌ Nenhum dado válido encontrado na mensagem. Use o formato correto para .bio.' },
-        { quoted: context.messageInfo }
-      );
+      // Não enviar mensagem de erro (conforme solicitado)
     }
 
   } catch (error) {
     console.error('[BIO] Erro ao processar mensagem .bio:', error);
-    await context.sock.sendMessage(
-      context.from,
-      { text: '❌ Erro interno ao processar perfil. Tente novamente.' },
-      { quoted: context.messageInfo }
-    );
+    // Não enviar mensagem de erro (conforme solicitado)
   }
 }
 

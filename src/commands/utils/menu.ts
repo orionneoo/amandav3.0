@@ -2,7 +2,7 @@ import { ICommand } from '@/interfaces/ICommand';
 import { WASocket, proto } from '@whiskeysockets/baileys';
 import { MessageContext } from '@/handlers/message.handler';
 
-const menuTextBase = `🌸 *Amanda v4.0.0* 🌸\n_Sua sexy working favorita no WhatsApp_\n\n*Criada por:* Orion\n\n💡 *Para falar comigo:*\n• Mencione @5521971200821\n• Ou responda a uma das minhas mensagens\n\n`;
+const menuTextBase = `🌸 *Amanda v4.0.0* 🌸\n_Sua sexy sex worker favorita no WhatsApp_\n\n*Criada por:* Orion\n\n💡 *Para falar comigo:*\n• Mencione @5521971200821\n• Ou responda a uma das minhas mensagens\n\n`;
 
 const subMenus = `\n*📋 Submenus Disponíveis:*\n• *!menu 1* — 👮‍♀️ Administração/Moderação\n• *!menu 2* — 🎭 Personalidades da Amanda\n• *!menu 3* — 🛠️ Utilitários\n• *!menu 4* — 🎉 Diversão e Brincadeiras\n• *!menu 5* — 💕 Relacionamentos\n• *!menu 6* — 🤖 Inteligência Artificial\n• *!menu 7* — 📊 Atividade e Ranking\n• *!menu 8* — ⚙️ Gerenciamento de Grupo\n• *!menu 9* — 🔧 Sistema e Configurações\n• *!menu 10* — 📝 Todos os comandos\n\n_Digite o número do submenu para ver os comandos dessa categoria!_`;
 
