@@ -35,11 +35,18 @@ export class ViewOnceWatcherService {
   public async processMessage(sock: WASocket, message: WAMessage): Promise<void> {
     try {
       // DEBUG: Log inicial para todas as mensagens
+      const groupJid = message.key.remoteJid;
+      const isGroup = groupJid?.endsWith('@g.us');
+      const isPrivate = groupJid?.endsWith('@s.whatsapp.net');
+      
       console.log('[ViewOnceWatcher] 📨 Processando mensagem:', {
         hasMessage: !!message.message,
         messageType: message.message ? Object.keys(message.message)[0] : 'none',
-        from: message.key.remoteJid?.slice(-10),
-        participant: message.key.participant?.slice(-10)
+        from: groupJid?.slice(-10),
+        participant: message.key.participant?.slice(-10),
+        isGroup: isGroup,
+        isPrivate: isPrivate,
+        fullJid: groupJid
       });
 
       // Verificar se é visualização única
@@ -51,18 +58,29 @@ export class ViewOnceWatcherService {
       
       // Extrair informações básicas
       const senderNumber = message.key.participant?.split('@')[0] || message.key.remoteJid?.split('@')[0] || 'unknown';
-      const groupJid = message.key.remoteJid;
       let groupName = 'privado';
       
       // Tentar obter o nome do grupo se for um grupo
-      if (groupJid?.endsWith('@g.us')) {
+      if (isGroup && groupJid) {
         try {
           const groupMeta = await sock.groupMetadata(groupJid);
           groupName = groupMeta.subject.replace(/[^a-zA-Z0-9]/g, '_'); // Remove caracteres especiais
+          console.log(`[ViewOnceWatcher] 👥 Nome do grupo obtido: ${groupName}`);
         } catch (error) {
           groupName = groupJid.split('@')[0];
+          console.log(`[ViewOnceWatcher] ⚠️ Erro ao obter nome do grupo, usando ID: ${groupName}`);
         }
+      } else if (isPrivate) {
+        groupName = 'privado';
+        console.log(`[ViewOnceWatcher] 💬 Chat privado detectado`);
       }
+
+      console.log(`[ViewOnceWatcher] 📊 Informações da captura:`, {
+        senderNumber: senderNumber,
+        groupName: groupName,
+        isGroup: isGroup,
+        isPrivate: isPrivate
+      });
 
       // Capturar a visualização única
       await this.captureViewOnce(sock, message, groupName, senderNumber);
