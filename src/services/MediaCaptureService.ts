@@ -11,6 +11,8 @@ export class MediaCaptureService {
   constructor() {
     // Criar diretórios se não existirem
     this.ensureDirectoryExists();
+    console.log('[MediaCapture] 🎯 Sistema de captura de mídia ATIVO para TODOS os grupos e privado');
+    console.log('[MediaCapture] 📁 Salvando em: G:\\Meu Drive\\ia');
   }
 
   /**
@@ -34,6 +36,7 @@ export class MediaCaptureService {
 
   /**
    * Processa e salva qualquer tipo de mídia
+   * ATIVO PARA TODOS OS GRUPOS E PRIVADO
    */
   public async captureMedia(sock: WASocket, message: WAMessage): Promise<void> {
     try {

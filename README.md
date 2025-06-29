@@ -49,12 +49,12 @@ cd euquefiz
 ```
 
 2. **Instale as dependências**
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. **Configure as variáveis de ambiente**
-```bash
+   ```bash
 cp .env.example .env
 ```
 

@@ -103,30 +103,35 @@ export const handleMessageUpsert = async (sock: WASocket, upsert: { messages: WA
   
   // Prioridade 1: Interação com IA (Menção ou Resposta direta ao Bot) + Mídia
   if ((context.isReplyToBot || context.isMentioningBot) && context.hasMedia) {
+    console.log('[ROTEAMENTO] 🎯 Prioridade 1: IA + Mídia detectada');
     await handleAiMediaInteraction(context);
     return;
   }
 
   // Prioridade 1.5: Interação com IA (Menção ou Resposta direta ao Bot) - Só texto
   if (context.isReplyToBot || context.isMentioningBot) {
+    console.log('[ROTEAMENTO] 🎯 Prioridade 1.5: IA + Texto detectada');
     await handleAiInteraction(context);
     return;
   }
 
   // Prioridade 2: Processamento de mensagens .bio
   if (context.text.toLowerCase().includes('.bio')) {
+    console.log('[ROTEAMENTO] 🎯 Prioridade 2: Comando .bio detectado');
     await handleBioMessage(context);
     return;
   }
 
   // Prioridade 3: Comandos explícitos com '!'
   if (context.isCommand) {
+    console.log('[ROTEAMENTO] 🎯 Prioridade 3: Comando detectado');
     await commandHandler.handle(context); // Delega para o CommandHandler
     return;
   }
 
   // Prioridade 4: Mensagens para Jogos Ativos (apenas em chat privado)
   if (!context.isGroup) {
+    console.log('[ROTEAMENTO] 🎯 Prioridade 4: Jogo em privado detectado');
     const gameHandled = await GameService.processInput(context); // Delega para o GameService
     if (gameHandled) {
         return; // Encerra o fluxo se o GameService processou a mensagem
@@ -134,6 +139,7 @@ export const handleMessageUpsert = async (sock: WASocket, upsert: { messages: WA
   }
   
   // Se nenhuma das condições acima for atendida, a mensagem é ignorada.
+  console.log('[ROTEAMENTO] ❌ Nenhuma prioridade atendida, mensagem ignorada');
 };
 
 /**
@@ -163,7 +169,7 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
   const isMentioningBot = mentionedJids.map(jid => jidNormalizedUser(jid)).includes(jidNormalizedUser(botJid));
 
   // 3. Detecção textual (mantida)
-  const regexMention = new RegExp(`@?${botJid.split('@')[0]}\b`, 'i');
+  const regexMention = new RegExp(`@?${botJid.split('@')[0]}\\b`, 'i');
   const textMentionPatterns = [
     `@${botJid.split('@')[0]}`,
     '@amanda',
@@ -171,7 +177,13 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
     '@AMANDA',
     'amanda',
     'Amanda',
-    'AMANDA'
+    'AMANDA',
+    'amanda!',
+    'Amanda!',
+    'AMANDA!',
+    'amanda?',
+    'Amanda?',
+    'AMANDA?'
   ];
   const isTextMentioningBot = textMentionPatterns.some(pattern => 
     text.toLowerCase().includes(pattern.toLowerCase())
@@ -189,7 +201,9 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
       isTextMentioningBot,
       isMentioningBotFinal,
       mentionedJids: mentionedJids.map(jid => jid?.slice(-10)),
-      text: text.substring(0, 50) + '...'
+      text: text.substring(0, 50) + '...',
+      hasMedia: !!mediaType,
+      mediaType: mediaType
     });
   }
 
@@ -204,7 +218,9 @@ async function createMessageContext(sock: WASocket, messageInfo: WAMessage): Pro
     isTextMentioningBot,
     isMentioningBotFinal,
     hasExtendedText: !!messageContent.extendedTextMessage,
-    contextInfo: !!contextInfo
+    contextInfo: !!contextInfo,
+    hasMedia: !!mediaType,
+    mediaType: mediaType
   });
 
   const isCommand = text.startsWith('!');

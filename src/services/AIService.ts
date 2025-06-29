@@ -279,7 +279,13 @@ export class AIService {
     quotedMessageText: string;
   }): Promise<string> {
     try {
-      console.log('[AIService] Processando imagem com Gemini...');
+      console.log('[AIService] 🖼️ Processando imagem com Gemini...');
+      console.log('[AIService] 📊 Dados da imagem:', {
+        bufferSize: imageBuffer.length,
+        caption: caption || 'Sem legenda',
+        senderName: context.senderName,
+        groupName: context.groupName
+      });
       
       // Converter imagem para base64
       const base64Image = imageBuffer.toString('base64');
@@ -305,6 +311,8 @@ export class AIService {
         IMPORTANTE: Descreva o que você vê na imagem e responda ao contexto da conversa.
       `;
       
+      console.log('[AIService] 📝 Prompt montado, enviando para Gemini...');
+      
       // Montar mensagem com imagem (formato correto da API Gemini)
       const messages = [
         {
@@ -322,18 +330,24 @@ export class AIService {
       ];
 
       // Chamar Gemini com imagem (sem systemPrompt para imagens)
+      console.log('[AIService] 🚀 Chamando API Gemini...');
       const result = await this.callGeminiAPI('', messages);
       
       if (result.text) {
-        console.log('[AIService] Resposta de imagem gerada com sucesso');
+        console.log('[AIService] ✅ Resposta de imagem gerada com sucesso');
+        console.log('[AIService] 📋 Resposta:', result.text.substring(0, 200) + '...');
         return result.text;
       } else {
-        console.warn('[AIService] Gemini retornou resposta vazia para imagem');
+        console.warn('[AIService] ⚠️ Gemini retornou resposta vazia para imagem');
         return `🤖 ${context.senderName}, analisei sua imagem! É uma foto interessante. Se quiser que eu descreva mais detalhadamente, me avise! 📸`;
       }
       
-    } catch (error) {
-      console.error('[AIService] Erro ao processar imagem:', error);
+    } catch (error: any) {
+      console.error('[AIService] ❌ Erro ao processar imagem:', error);
+      console.error('[AIService] 🔍 Detalhes do erro:', {
+        errorMessage: error?.message || 'Erro desconhecido',
+        errorStack: error?.stack?.substring(0, 500) || 'Stack não disponível'
+      });
       return `🤖 ${context.senderName}, desculpe, tive dificuldade para analisar sua imagem. Mas posso ver que você me enviou uma foto! 📸`;
     }
   }
@@ -943,18 +957,35 @@ IMPORTANTE: Use as funções disponíveis apenas quando o usuário claramente qu
     }
   ): Promise<string> {
     try {
-      console.log('[AIService] Processando interação com imagem...');
-      const buffer = await downloadMediaMessage(context.messageInfo, 'buffer', {});
+      console.log('[AIService] 🖼️ Processando interação com imagem...');
+      console.log('[AIService] 📊 Contexto da imagem:', {
+        senderName: contextInfo.senderName,
+        groupName: contextInfo.groupName,
+        personality: contextInfo.personality,
+        hasQuotedText: !!contextInfo.quotedMessageText,
+        caption: context.text || 'Sem legenda'
+      });
       
-      return await this.generateContentWithImage(
+      const buffer = await downloadMediaMessage(context.messageInfo, 'buffer', {});
+      console.log('[AIService] ✅ Imagem baixada com sucesso, tamanho:', (buffer as Buffer).length, 'bytes');
+      
+      const response = await this.generateContentWithImage(
         'Analise esta imagem', 
         buffer as Buffer, 
         context.text,
         contextInfo
       );
-    } catch (error) {
-      console.error('[AIService] Erro ao processar imagem:', error);
-      return `🤖 ${contextInfo.senderName}, desculpe, tive dificuldade para analisar sua imagem. 📸`;
+      
+      console.log('[AIService] ✅ Resposta da IA para imagem gerada:', response.substring(0, 100) + '...');
+      return response;
+      
+    } catch (error: any) {
+      console.error('[AIService] ❌ Erro ao processar imagem:', error);
+      console.error('[AIService] 🔍 Detalhes do erro:', {
+        errorMessage: error?.message || 'Erro desconhecido',
+        errorStack: error?.stack?.substring(0, 500) || 'Stack não disponível'
+      });
+      return `🤖 ${contextInfo.senderName}, desculpe, tive dificuldade para analisar sua imagem. Mas posso ver que você me enviou uma foto! 📸`;
     }
   }
 } 
